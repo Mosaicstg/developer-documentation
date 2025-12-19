@@ -14,28 +14,15 @@ A decision-focused guide for internal teams (Engineering, Design, Project Manage
   - [Accessibility Requirements](#accessibility-requirements)
   - [Analytics & Tracking](#analytics--tracking)
 - [Section 2: QA & Testing](#section-2-qa--testing)
-- [CMS Path](#cms-path)
-  - [CMS-1: Discovery & Requirements](#cms-1-discovery--requirements)
-  - [CMS-2: Technology Stack Selection](#cms-2-technology-stack-selection)
-  - [CMS-3: Hosting & Infrastructure](#cms-3-hosting--infrastructure)
-  - [CMS-4: Performance & Optimization](#cms-4-performance--optimization)
-  - [CMS-5: Project Management & Workflow](#cms-5-project-management--workflow)
-  - [CMS-6: Security Considerations](#cms-6-security-considerations)
-- [Custom App Path](#custom-app-path)
-  - [APP-1: Discovery & Requirements](#app-1-discovery--requirements)
-  - [APP-2: Technology Stack Selection](#app-2-technology-stack-selection)
-  - [APP-3: Hosting & Infrastructure](#app-3-hosting--infrastructure)
-  - [APP-4: Performance & Optimization](#app-4-performance--optimization)
-  - [APP-5: Project Management & Workflow](#app-5-project-management--workflow)
-  - [APP-6: Security Considerations](#app-6-security-considerations)
-- [Hybrid Path](#hybrid-path)
-  - [HYB-1: Discovery & Requirements](#hyb-1-discovery--requirements)
-  - [HYB-2: Technology Stack Selection](#hyb-2-technology-stack-selection)
-  - [HYB-3: Hosting & Infrastructure](#hyb-3-hosting--infrastructure)
-  - [HYB-4: Performance & Optimization](#hyb-4-performance--optimization)
-  - [HYB-5: Project Management & Workflow](#hyb-5-project-management--workflow)
-  - [HYB-6: Security Considerations](#hyb-6-security-considerations)
-- [Section 3: Path Evolution Principles](#section-3-path-evolution-principles)
+- [Section 3: Project Execution](#section-3-project-execution)
+  - [Discovery & Requirements](#discovery--requirements)
+  - [Technology Stack Selection](#technology-stack-selection)
+  - [Hosting & Infrastructure](#hosting--infrastructure)
+  - [Performance & Optimization](#performance--optimization)
+  - [Project Management & Workflow](#project-management--workflow)
+  - [Security Considerations](#security-considerations)
+- [Section 4: Path Evolution](#section-4-path-evolution)
+- [Appendix: Red Flag Questions](#appendix-red-flag-questions)
 - [Embedded Resources](#embedded-resources)
   - [Application Resource Requirements Checklist](#application-resource-requirements-checklist)
   - [Hosting & Performance Notes](#hosting--performance-notes)
@@ -411,17 +398,19 @@ Testing strategy applicable to all paths. Path-specific notes in each path's Pro
 
 ---
 
-## CMS Path
+## Section 3: Project Execution
 
-CMS-based projects (WordPress, Webflow, Drupal, etc.) where clients manage content through admin interfaces with predefined templates.
+Unified guidance for all project paths. Path-specific content marked with [CMS], [APP], or [HYB] tags.
 
 ---
 
-### CMS-1: Discovery & Requirements
+### Discovery & Requirements
 
 > **Reference:** See [Baseline Stakeholder Questions](#baseline-stakeholder-questions) for universal questions.
 
-#### CMS-Specific Discovery Questions
+#### Path-Specific Discovery Questions
+
+**[CMS]** Content-focused:
 
 - **Content Control:** How much control does the client need? Can templates work, or do they need custom layouts for each page?
 - **Content Types:** What types of content? Posts, pages, products, team members, testimonials, events?
@@ -431,325 +420,7 @@ CMS-based projects (WordPress, Webflow, Drupal, etc.) where clients manage conte
 - **Integrations:** Email marketing, analytics, forms, payment processors?
 - **Long-term:** Will the client manage this themselves post-launch, or do you provide ongoing support?
 
-#### Defining Scale & Constraints
-
-- **Audience Size:** Monthly visits? Concurrent users?
-- **Content Volume:** How much content? Update frequency?
-- **Geographic Scope:** Single region? Global?
-- **Device Requirements:** Desktop-first? Mobile-critical?
-- **Technical Constraints:** Existing systems to integrate? Budget limits?
-- **Team Constraints:** In-house team? Agency? Hybrid?
-
-#### Project Kickoff Checklist: CMS Path
-
-- [ ] **Discovery Complete**
-
-  - [ ] Business goals documented
-  - [ ] Success metrics defined (see [Baseline Success Metrics](#baseline-success-metrics))
-  - [ ] Audience/scale understood
-  - [ ] Budget & timeline confirmed
-
-- [ ] **Content Strategy**
-
-  - [ ] Content types identified
-  - [ ] Content structure documented (hierarchy, relationships)
-  - [ ] Existing content audit completed (if applicable)
-  - [ ] Migration plan (if needed)
-  - [ ] Editorial workflow defined
-  - [ ] Approval process documented
-
-- [ ] **Team & Access**
-
-  - [ ] Project stakeholders identified
-  - [ ] Decision makers confirmed
-  - [ ] Content editors/users identified
-  - [ ] Permission levels planned
-
-- [ ] **Technical Planning**
-
-  - [ ] CMS platform selected
-  - [ ] Hosting plan determined
-  - [ ] Third-party integrations mapped
-  - [ ] Performance requirements documented
-  - [ ] Security requirements documented (see [Baseline Security Questions](#baseline-security-questions))
-  - [ ] Accessibility requirements defined (see [Accessibility Requirements](#accessibility-requirements))
-  - [ ] Analytics plan documented (see [Analytics & Tracking](#analytics--tracking))
-
-- [ ] **Design & Brand**
-
-  - [ ] Brand guidelines available
-  - [ ] Design direction confirmed
-  - [ ] Template/page types defined
-  - [ ] Design review cadence set
-
-- [ ] **Ongoing Support**
-  - [ ] Support model defined (agency-managed vs client-managed)
-  - [ ] Training needs identified
-  - [ ] Maintenance plan established
-
-#### Red Flag Questions
-
-- Is the client asking for highly custom page layouts that don't fit template approach?
-- Does this project have complex data relationships that don't align with standard content models?
-- Is performance critical (real-time data, leaderboards, complex queries)?
-- Does the team lack CMS experience but need to manage it long-term?
-- Are there integrations that are difficult with this CMS platform?
-
----
-
-### CMS-2: Technology Stack Selection
-
-#### CMS Platform Considerations
-
-**Decision Framework:** Ease of use, content modeling fit, theme/plugin ecosystem, hosting options, scalability, security track record, support availability, cost (license/hosting/plugins/maintenance), long-term viability.
-
-#### Theme/Plugin Ecosystem
-
-- **Pre-built Themes:** Cost-benefit analysis (speed vs customization needs)
-- **Plugin Strategy:** Critical vs nice-to-have plugins; vendor lock-in risks
-- **Custom Code:** Where's the line between configuration and custom development?
-- **Performance:** Do popular plugins add bloat? Are there lightweight alternatives?
-
-#### Hosting Implications
-
-- **Managed vs Self-Hosted:** Trade-offs (support vs control)
-- **Scalability:** Can hosting auto-scale during traffic spikes?
-- **Backup & Recovery:** What's the backup strategy?
-- **CDN:** Is a CDN necessary? Included or additional cost?
-
-#### CMS Stack Decision Framework
-
-| Decision     | Considerations                                    |
-| ------------ | ------------------------------------------------- |
-| **Platform** | Ease of use, content model fit, ecosystem, cost   |
-| **Theme**    | Design fit, customization effort, performance     |
-| **Plugins**  | Essential only? Performance impact? Alternatives? |
-| **Hosting**  | Managed or self-hosted? Auto-scaling needed?      |
-| **Database** | Does CMS include? Performance requirements?       |
-
-#### Key Trade-offs
-
-- **Speed to Launch vs Long-term Customization:** Pre-built themes are fast; custom development is flexible
-- **Ease of Use vs Power:** More user-friendly = fewer advanced features
-- **Cost vs Features:** More plugins and customization = higher cost
-- **Vendor Lock-in vs Productivity:** Popular CMS = large ecosystem but harder to migrate
-
-#### Red Flag Questions
-
-- Are you building the design from scratch but CMS templates are limited?
-- Does the project have custom data structures that don't fit the CMS content model?
-- Are critical integrations unavailable for this platform?
-- Is the plugin ecosystem unstable or poorly maintained?
-- Does performance testing show this platform won't scale for your traffic?
-
----
-
-### CMS-3: Hosting & Infrastructure
-
-#### Resource Requirements
-
-Use the [Application Resource Requirements Checklist](#application-resource-requirements-checklist) to determine hosting tier.
-
-**Quick Assessment:**
-
-- **Default Hosting Sufficient** (low cost)
-
-  - Static content sites, blogs, marketing sites
-  - <50k monthly visits
-  - No real-time data or complex queries
-  - Standard plugin ecosystem
-
-- **Moderate Resources Needed** (medium cost)
-
-  - Dynamic content (regularly updated)
-  - 50k-500k monthly visits
-  - E-commerce or membership sites
-  - Custom plugins or heavy traffic patterns
-
-- **Premium Resources Required** (higher cost)
-  - High-traffic sites (>500k monthly visits)
-  - Real-time data, heavy database queries
-  - Complex integrations
-  - Multiple concurrent editors
-
-#### Deployment Environment Options
-
-| Option                                    | Pros                                   | Cons                               | Best For                              |
-| ----------------------------------------- | -------------------------------------- | ---------------------------------- | ------------------------------------- |
-| **Managed CMS Hosting**                   | Auto-scaling, support, updates handled | Less control, higher cost          | Most CMS projects                     |
-| **Traditional Server (Shared/Dedicated)** | Predictable cost, full control         | Manual scaling, maintenance burden | Small sites, cost-conscious           |
-| **Container Hosting (Docker)**            | Scalability, consistency               | More complexity, DevOps needed     | Complex setups, multiple environments |
-| **Serverless**                            | Auto-scaling, pay-per-use              | Not ideal for traditional CMS      | Rarely used for CMS                   |
-
-#### Scaling Considerations
-
-- **Traffic Spikes:** Does your hosting auto-scale? What's the trigger and delay?
-- **Database Performance:** Will your database handle peak load? Caching strategy?
-- **CDN Integration:** Should static assets be served from CDN?
-- **Backup & Recovery:** How often? Automated? Tested?
-
-#### Red Flag Questions
-
-- Is your hosting provider actively maintaining the platform version you're on?
-- Can you scale quickly during predictable traffic spikes (campaigns, launches)?
-- Is the database performance adequate for your content volume and traffic?
-- Do you have a documented backup and recovery plan?
-- Is there a significant cost jump when you outgrow your current tier?
-
----
-
-### CMS-4: Performance & Optimization
-
-#### CMS-Specific Performance Priorities
-
-Page load time (<3s), TTFB, caching (browser/server/CDN), database query optimization, plugin performance audit, static asset delivery via CDN.
-
-#### Optimization Targets & Budgets
-
-- **Target Page Load:** <3 seconds (desktop), <5 seconds (mobile)
-- **Core Web Vitals:** LCP <2.5s, FID <100ms, CLS <0.1
-- **TTFB:** <600ms (if possible)
-- **Asset Size:** Images optimized, code minified
-
-#### Monitoring Approach
-
-- **Real User Monitoring (RUM):** Tools like Google Analytics, Sentry
-- **Synthetic Monitoring:** Regular performance tests from multiple locations
-- **Alerting:** Set thresholds; alert when performance degrades
-- **Regular Audits:** Monthly performance reviews
-
-#### Performance Optimization Tactics
-
-- **Caching Strategy:** Page caching, object caching, database query caching
-- **Image Optimization:** Lazy loading, responsive images, WebP format
-- **CDN Usage:** Serve images, CSS, JS from CDN
-- **Plugin Audit:** Remove unused plugins; replace heavy ones
-- **Database:** Optimize queries, remove old revisions/drafts
-
-#### Red Flag Questions
-
-- Is your site slower than competitors in the same space?
-- Are there specific plugins causing performance degradation?
-- Is your TTFB consistently above 1 second?
-- Is caching not working as expected?
-- Are Core Web Vitals failing?
-
----
-
-### CMS-5: Project Management & Workflow
-
-#### Team Coordination Structure
-
-**Roles:**
-
-- **Project Manager:** Overall timeline, stakeholder communication, scope management
-- **CMS Engineer:** Platform setup, customization, integrations, performance
-- **Designer:** Theme customization, UX/UI for admin experience, design system
-- **Content Lead:** Content strategy, editorial workflow, training
-- **Client Stakeholder:** Content decisions, feedback, approvals
-
-**Communication:**
-
-- Weekly stand-ups (Eng, Design, PM)
-- Bi-weekly stakeholder reviews
-- Async updates on blockers
-- Clear decision log
-
-#### Timeline Phases
-
-| Phase           | Lead   | Duration | Key Activities                                                        | Deliverables                                              |
-| --------------- | ------ | -------- | --------------------------------------------------------------------- | --------------------------------------------------------- |
-| **Discovery**   | PM     | 1-2w     | Requirements, content structure, platform selection, hosting setup    | Content map, CMS selected, hosting live                   |
-| **Design**      | Design | 2-4w     | Wireframes/mockups, admin UI, brand integration, accessibility review | Approved designs, design system, template list            |
-| **Development** | Eng    | 2-6w     | CMS config, theme/template dev, plugins, integrations, testing setup  | Staging site, integrations complete, performance baseline |
-| **Launch**      | PM     | 1-2w     | Content migration, training, QA, accessibility audit, go-live         | Live site, trained staff, runbook                         |
-| **Post-Launch** | PM     | ongoing  | Monitoring, support, optimization, maintenance cadence, handoff       | Stable site, optimization roadmap, handoff complete       |
-
-**Total Typical Timeline:** 8-16 weeks (varies widely)
-
-> **Client Handoff:** See [Client Handoff Checklist](#client-handoff-checklist) in Section 1.
-
-#### Risk Management & Mitigation
-
-| Risk                            | Mitigation                                           |
-| ------------------------------- | ---------------------------------------------------- |
-| Content not ready for migration | Start content audit early; assign clear ownership    |
-| Scope creep                     | Weekly scope management; formal change requests      |
-| Performance issues at launch    | Performance testing in Phase 3; baseline established |
-| Untrained staff post-launch     | Training sessions in Phase 4; documentation clear    |
-| Plugin conflicts/instability    | Testing in staging; vendor support engaged           |
-| Integration delays              | Integration work starts early; APIs vetted           |
-
-#### Communication Checkpoints
-
-- **End of Discovery:** CMS selected, content map approved, go/no-go decision
-- **End of Design:** Design approved, no surprises, timeline reconfirmed
-- **Mid-Development:** Progress on schedule? Any blockers?
-- **Pre-Launch:** All testing complete, staff trained, go-live plan finalized
-- **Post-Launch:** Issues resolved? Performance acceptable? Optimization roadmap clear?
-
-#### Red Flag Questions
-
-- Is the content team overwhelmed by the CMS learning curve?
-- Are timelines slipping? Where and why?
-- Is the CMS team blocking content team progress?
-- Are critical third-party integrations delayed?
-- Is performance testing revealing unexpected issues?
-
----
-
-### CMS-6: Security Considerations
-
-> **Reference:** See [Baseline Security Questions](#baseline-security-questions) for universal security checklist.
-
-#### CMS-Specific Vulnerabilities
-
-- **Plugin Vulnerabilities:** Outdated plugins are common attack vectors
-- **User Account Compromise:** Weak passwords, brute force attacks
-- **SQL Injection:** (Less common in modern CMS but possible with custom code)
-- **Malware:** Compromised plugins or themes can inject malware
-- **Unauthorized Access:** User permissions misconfigured
-- **Data Exposure:** Sensitive data in backups or logs
-
-#### CMS Security Best Practices
-
-- **Keep Everything Updated:** CMS, plugins, themes, server OS
-- **Strong Passwords:** Enforce strong passwords; consider password managers
-- **Limited Plugin Ecosystem:** Use only necessary plugins from trusted vendors
-- **Regular Backups:** Automated, tested, stored off-site
-- **Web Application Firewall (WAF):** Consider WAF for high-traffic sites
-- **User Permissions:** Principle of least privilege
-- **Monitoring & Logging:** Log security events; alert on suspicious activity
-- **Regular Audits:** Security audits annually or after major changes
-
-#### Data Handling for CMS
-
-- **Customer Data:** Where is it stored? How is it protected? Who has access?
-- **Backups:** Encrypted? Stored securely? Retention policy?
-- **Third-party Access:** What data do plugins/integrations access? Can you limit it?
-- **Compliance:** Document data handling for regulations
-
-#### Red Flag Questions
-
-- Are plugins outdated or no longer maintained?
-- Is there no documented backup or disaster recovery plan?
-- Are user permissions overly permissive (everyone is admin)?
-- Is sensitive customer data being stored in easy-to-access locations?
-- Is there no monitoring or alerting for security issues?
-
----
-
-## Custom App Path
-
-Custom web applications with full-stack control, complex business logic, and custom UI/UX requirements.
-
----
-
-### APP-1: Discovery & Requirements
-
-> **Reference:** See [Baseline Stakeholder Questions](#baseline-stakeholder-questions) for universal questions.
-
-#### Custom App-Specific Discovery Questions
+**[APP]** Custom application-focused:
 
 - **MVP Scope:** What's the absolute minimum to launch? What can wait?
 - **Core Features:** What 3-5 features define success?
@@ -760,372 +431,7 @@ Custom web applications with full-stack control, complex business logic, and cus
 - **Complexity:** Complex business logic? Real-time features? Machine learning?
 - **Team Experience:** Has the team built this type of app before?
 
-#### Defining Scale & Constraints
-
-- **User Base:** Expected users? Concurrent active users?
-- **Data Volume:** How much data will be stored/processed?
-- **Geographic Scope:** Single region? Global? Latency requirements?
-- **Device Requirements:** Web, mobile, both? Desktop-first?
-- **Technical Constraints:** Legacy systems to integrate? Tech debt to address?
-- **Team Constraints:** In-house team? Contract developers? Offshore?
-
-#### Project Kickoff Checklist: Custom App Path
-
-- [ ] **Discovery Complete**
-
-  - [ ] Business goals documented
-  - [ ] Success metrics defined (see [Baseline Success Metrics](#baseline-success-metrics))
-  - [ ] User research completed
-  - [ ] Market analysis done
-  - [ ] Budget & timeline confirmed
-
-- [ ] **MVP Definition**
-
-  - [ ] MVP scope locked
-  - [ ] Core features (top 3-5) identified
-  - [ ] Non-essential features deferred
-  - [ ] User stories written
-  - [ ] Acceptance criteria defined
-
-- [ ] **Technical Planning**
-
-  - [ ] Data model designed (entities, relationships)
-  - [ ] API design sketched
-  - [ ] Architecture diagram created
-  - [ ] Third-party integrations mapped
-  - [ ] Performance requirements documented
-  - [ ] Security requirements documented (see [Baseline Security Questions](#baseline-security-questions))
-  - [ ] Accessibility requirements defined (see [Accessibility Requirements](#accessibility-requirements))
-  - [ ] Analytics plan documented (see [Analytics & Tracking](#analytics--tracking))
-  - [ ] Scalability plan sketched
-
-- [ ] **Team & Skills**
-
-  - [ ] Team composition confirmed
-  - [ ] Skill gaps identified
-  - [ ] Training needs planned
-  - [ ] Decision-making structure clear
-  - [ ] Tech lead/architect identified
-
-- [ ] **Design & UX**
-
-  - [ ] User personas created
-  - [ ] User journeys mapped
-  - [ ] Wireframes for core flows
-  - [ ] Design system started
-  - [ ] Accessibility requirements noted
-
-- [ ] **DevOps & Infrastructure**
-  - [ ] Development environment documented
-  - [ ] Staging/testing environment planned
-  - [ ] Deployment process sketched
-  - [ ] Monitoring/logging strategy outlined
-  - [ ] CI/CD pipeline planned
-
-#### Red Flag Questions
-
-- Is the MVP scope still unclear or expanding?
-- Does the team lack experience with this type of application?
-- Are there critical integrations with uncertain timelines?
-- Is the data model overly complex?
-- Is scalability an afterthought rather than part of initial design?
-- Are non-technical stakeholders expecting unlimited scope?
-
----
-
-### APP-2: Technology Stack Selection
-
-#### Frontend Framework Considerations
-
-**Decision Framework:** Team expertise, project type (SPA/SSR/static/mobile), performance requirements, scalability, ecosystem size, hiring market, maintenance cadence, learning curve, tooling quality.
-
-#### Backend/API Architecture
-
-**Decision Framework:** Language/framework (team expertise, performance, ecosystem), API style (REST/GraphQL/gRPC), authentication (JWT/OAuth/sessions), real-time needs (WebSockets/SSE), background jobs, caching strategy, scalability approach, testing framework.
-
-#### Database Selection
-
-**Decision Framework:** Data type (relational/document/graph/time-series), query patterns, scalability (vertical/horizontal/sharding), consistency requirements, performance needs, operational burden (managed vs self-hosted), cost, backup/recovery criticality.
-
-#### Third-party Integrations
-
-- **Payment Processing:** Stripe, Square, PayPal?
-- **Email:** SendGrid, Mailgun, AWS SES?
-- **Analytics:** Google Analytics, Mixpanel, custom?
-- **Storage:** AWS S3, GCS, or self-hosted?
-- **Authentication:** Auth0, Firebase, custom?
-- **Monitoring:** DataDog, New Relic, Sentry?
-
-#### Custom App Stack Decision Framework
-
-| Layer         | Considerations                                 | Options                                |
-| ------------- | ---------------------------------------------- | -------------------------------------- |
-| **Frontend**  | Team skill, performance, ecosystem             | React, Vue, Angular, Svelte, etc.      |
-| **Backend**   | Language, performance, team expertise          | Node, Python, Java, Go, Ruby, etc.     |
-| **Database**  | Data model, scalability, consistency           | PostgreSQL, MongoDB, DynamoDB, etc.    |
-| **Hosting**   | Cost, scalability, management burden           | AWS, GCP, Azure, Heroku, etc.          |
-| **Real-time** | Needed? WebSockets, polling, or cloud service? | Socket.io, GraphQL subscriptions, etc. |
-
-#### Key Trade-offs
-
-- **Speed to Launch vs Long-term Maintainability:** Startups use cutting-edge; enterprises use stable
-- **Flexibility vs Opinionation:** Minimal frameworks are flexible; full frameworks are opinionated
-- **Performance vs Developer Experience:** Sometimes they conflict
-- **Managed Services vs Self-hosted:** Managed = operational simplicity; self-hosted = cost savings + control
-- **Consistency vs Performance:** Strong consistency is slower; eventual consistency is faster
-
-#### Red Flag Questions
-
-- Is the team unfamiliar with the chosen stack?
-- Is the stack overly complex for the problem?
-- Is the chosen database a poor fit for the data model?
-- Are critical integrations unavailable for this stack?
-- Is the scaling strategy vague or non-existent?
-- Is the team relying on new/unstable libraries?
-
----
-
-### APP-3: Hosting & Infrastructure
-
-#### Resource Requirements
-
-Use the [Application Resource Requirements Checklist](#application-resource-requirements-checklist) to determine hosting needs.
-
-**Quick Assessment:**
-
-- **Default Resources Sufficient**
-
-  - Internal tools, low-traffic prototypes
-  - <10k monthly active users
-  - Predictable, low-spike traffic patterns
-  - Single-region deployment
-
-- **Moderate Resources Needed**
-
-  - SaaS products, moderate user base (10k-100k MAU)
-  - Moderate traffic spikes
-  - Some real-time features
-  - Multi-region nice-to-have
-
-- **Premium Resources Required**
-  - High-traffic applications (>100k MAU)
-  - Real-time data, streaming queries
-  - Global multi-region deployment
-  - Complex background processing
-  - Strict latency requirements
-
-#### Deployment Environment Options
-
-| Option                                      | Pros                                 | Cons                                    | Best For                            |
-| ------------------------------------------- | ------------------------------------ | --------------------------------------- | ----------------------------------- |
-| **Platform as a Service (Heroku, Railway)** | Simple deploy, auto-scaling, support | Higher cost, less control               | Startups, rapid iteration           |
-| **Container (Docker + Kubernetes)**         | Portable, scalable, reproducible     | Operational complexity, learning curve  | Growing apps, multiple environments |
-| **Serverless (AWS Lambda, Functions)**      | Pay-per-use, auto-scaling, simple    | Cold starts, complexity, vendor lock-in | Event-driven, variable traffic      |
-| **Traditional Cloud (AWS EC2, GCP VMs)**    | Control, scalability, cost-effective | Operational burden, manual scaling      | Established teams, complex apps     |
-
-#### Infrastructure as Code (IaC)
-
-- Use code to define infrastructure (Terraform, CloudFormation, Pulumi)
-- Version control your infrastructure
-- Reproducible deployments across environments
-- Easy to scale and modify
-
-#### Auto-Scaling & Load Balancing
-
-- **Horizontal Scaling:** More instances under a load balancer
-- **Vertical Scaling:** Bigger machines (simpler but limits)
-- **Auto-scaling Triggers:** CPU, memory, request queue depth, custom metrics
-- **Database Scaling:** Replicas for reads, sharding for writes (complex)
-
-#### Backup & Disaster Recovery
-
-- **Backup Strategy:** Automated daily backups, encrypted, tested
-- **Recovery Time Objective (RTO):** How fast can you restore?
-- **Recovery Point Objective (RPO):** How much data loss is acceptable?
-- **Cross-region Backups:** Critical for high-availability apps
-- **Disaster Recovery Plan:** Document step-by-step recovery procedures
-
-#### Red Flag Questions
-
-- Is your hosting provider's support adequate for your team?
-- Can you scale quickly during traffic spikes?
-- Is database performance adequate? Have you load-tested?
-- Do you have a documented and tested disaster recovery plan?
-- Is your infrastructure reproducible (IaC)?
-- Are there significant cost jumps at each scaling tier?
-
----
-
-### APP-4: Performance & Optimization
-
-#### Custom App-Specific Performance Priorities
-
-API response time (<200ms), frontend load time (<3s), database query time (<100ms), throughput (req/sec), concurrency (simultaneous users), reliability (uptime SLA).
-
-#### Optimization Targets & Budgets
-
-- **API Latency:** p99 <500ms (adjust based on app type)
-- **Throughput:** Define based on user base and growth
-- **Frontend Load:** <3s page load (SPAs vary)
-- **Core Web Vitals:** LCP <2.5s, FID <100ms, CLS <0.1
-- **Uptime:** Define SLA (e.g., 99.9% = 43 minutes downtime/month)
-
-#### Monitoring Approach
-
-- **Application Performance Monitoring (APM):** DataDog, New Relic, Sentry
-- **Real User Monitoring (RUM):** Understand actual user experience
-- **Synthetic Monitoring:** Regular tests from multiple locations
-- **Database Monitoring:** Query performance, slow queries, index usage
-- **Infrastructure Monitoring:** CPU, memory, disk, network, costs
-- **Alerting:** Set thresholds; page on-call for critical issues
-
-#### Performance Optimization Tactics
-
-- **Caching:** Application-level (Redis), CDN, HTTP caching
-- **Database:** Indexes, query optimization, replication for reads
-- **API Design:** Pagination, filtering, sparse fieldsets (avoid over-fetching)
-- **Frontend:** Code splitting, lazy loading, minification, compression
-- **Infrastructure:** Right-sized instances, auto-scaling, CDN
-- **Profiling:** Identify bottlenecks before optimizing
-
-#### Red Flag Questions
-
-- Are you hitting performance issues unexpectedly in production?
-- Is your database the bottleneck? Have you optimized queries/indexes?
-- Is your frontend bundle size growing unchecked?
-- Are API responses slow? Are there N+1 query problems?
-- Do you lack visibility into production performance?
-- Is scalability an afterthought rather than part of design?
-
----
-
-### APP-5: Project Management & Workflow
-
-#### Team Coordination Structure
-
-**Roles:**
-
-- **Product Manager:** Vision, roadmap, prioritization, stakeholder management
-- **Engineering Lead:** Technical decisions, architecture, team velocity
-- **Frontend Engineer(s):** UI/UX implementation, performance
-- **Backend Engineer(s):** API, database, integrations, scaling
-- **QA/Testing:** Test automation, quality assurance
-- **Designer:** UX/UI, design system, user research
-- **DevOps:** Deployment, infrastructure, monitoring (if team is large)
-
-**Communication:**
-
-- Daily stand-ups (brief, async or sync)
-- Weekly planning/sync meetings
-- Bi-weekly demos to stakeholders
-- Retrospectives bi-weekly or monthly
-- Async updates on blockers, decisions
-- Clear decision log
-
-#### Timeline Phases
-
-| Phase           | Lead   | Duration | Key Activities                                                      | Deliverables                                        |
-| --------------- | ------ | -------- | ------------------------------------------------------------------- | --------------------------------------------------- |
-| **Discovery**   | PM     | 2-4w     | Requirements, architecture design, team formation, MVP definition   | Architecture doc, MVP user stories, dev environment |
-| **Design**      | Design | 2-4w     | UX research, wireframes, design system, accessibility review        | Approved designs, design system, component library  |
-| **Development** | Eng    | 6-16w    | MVP features, API/backend, frontend, testing, performance, security | Staging, MVP features, API docs, test coverage      |
-| **Launch**      | PM     | 1-2w     | Final QA, docs, training, accessibility audit, go-live              | Live product, docs, trained team                    |
-| **Post-Launch** | PM     | ongoing  | Monitoring, bug fixes, feedback, optimization, handoff              | Stable product, roadmap, handoff complete           |
-
-**Total Typical Timeline:** 12-32 weeks (highly variable)
-
-> **Client Handoff:** See [Client Handoff Checklist](#client-handoff-checklist) in Section 1.
-
-#### Risk Management & Mitigation
-
-| Risk                            | Mitigation                                              |
-| ------------------------------- | ------------------------------------------------------- |
-| Scope creep                     | MVP locked; formal change process; weekly scope reviews |
-| Performance issues at launch    | Load testing in Phase 3; target metrics established     |
-| Team communication/coordination | Clear roles, daily stand-ups, decision log              |
-| Unexpected technical blockers   | Architecture review early; tech spikes for unknowns     |
-| Third-party integration delays  | Integration work early; vendors engaged immediately     |
-| Lack of test coverage           | TDD approach; automated testing required                |
-| Database scaling issues         | Schema designed for scale; read replicas planned        |
-
-#### Communication Checkpoints
-
-- **End of Discovery:** Architecture approved, MVP clear, team ready, go/no-go
-- **End of Design:** UX approved, design system ready, no surprises
-- **Mid-Development:** On track? Blockers? Velocity realistic?
-- **Pre-Launch:** All features complete? Tests passing? Performance acceptable? Go/no-go
-- **Post-Launch:** Issues resolved? Performance acceptable? User feedback positive?
-
-#### Red Flag Questions
-
-- Is scope expanding constantly? MVP in danger?
-- Is the team velocity declining? Why?
-- Are there architectural concerns not being addressed?
-- Is testing falling behind (technical debt)?
-- Are performance issues being discovered late?
-- Is stakeholder communication breaking down?
-
----
-
-### APP-6: Security Considerations
-
-> **Reference:** See [Baseline Security Questions](#baseline-security-questions) for universal security checklist.
-
-#### Custom App-Specific Attack Surfaces
-
-- **Authentication Attacks:** Brute force, phishing, weak password resets
-- **API Attacks:** Unauthorized access, injection attacks, rate limiting bypass
-- **Data Access:** Unauthorized data access, IDOR (Insecure Direct Object Reference)
-- **Third-party Risk:** Compromised dependencies, supply chain attacks
-- **Infrastructure:** Unpatched servers, misconfigured cloud permissions
-- **User Data:** Improper handling, exposure in logs, backups
-
-#### Security Best Practices
-
-- **Secure by Default:** Security built in, not bolted on
-- **Least Privilege:** Users have minimum required access
-- **Defense in Depth:** Multiple layers of security (application, network, infrastructure)
-- **Input Validation:** Validate all input; whitelist expected patterns
-- **Output Encoding:** Escape output; prevent XSS attacks
-- **Dependency Management:** Keep libraries updated; monitor for vulnerabilities
-- **Logging & Monitoring:** Log security events; alert on suspicious activity
-- **Code Review:** Security-focused code reviews; threat modeling
-- **Testing:** Security testing in QA; penetration testing before launch
-- **Documentation:** Document security architecture and decisions
-
-#### Data Handling
-
-- **Customer Data:** Where's it stored? How long? Who has access?
-- **Encryption:** What data is encrypted? In transit and at rest?
-- **Backups:** Encrypted? Stored securely? Access controlled?
-- **Compliance:** Document data handling for regulations (GDPR, CCPA, etc.)
-- **Data Retention:** Delete data when no longer needed
-- **User Rights:** Can users export/delete their data? Implement easily.
-
-#### Red Flag Questions
-
-- Does your app lack HTTPS/TLS?
-- Are passwords not hashed (or hashed with weak algorithms)?
-- Are there no rate limits on login or API endpoints?
-- Is authentication/authorization logic not reviewed?
-- Are dependencies not monitored for vulnerabilities?
-- Is sensitive data stored in logs or error messages?
-- Is there no documented security testing process?
-- Are third-party services over-privileged?
-
----
-
-## Hybrid Path
-
-Projects using a headless CMS with a custom frontend, combining content management flexibility with frontend control.
-
----
-
-### HYB-1: Discovery & Requirements
-
-> **Reference:** See [Baseline Stakeholder Questions](#baseline-stakeholder-questions) for universal questions.
-
-#### Hybrid-Specific Discovery Questions
+**[HYB]** Headless-focused:
 
 - **Why Headless?** What does headless unlock that a traditional CMS doesn't?
 - **Content Model:** What content types? How structured?
@@ -1138,14 +444,14 @@ Projects using a headless CMS with a custom frontend, combining content manageme
 
 #### Defining Scale & Constraints
 
-- **Audience Size:** Monthly visits? Concurrent users?
-- **Content Volume:** How much? Update frequency?
-- **Traffic Patterns:** Spikes? Seasonal? Predictable?
-- **Geographic Scope:** Single region? Global?
-- **Device Requirements:** Desktop, mobile, both?
-- **Team Constraints:** In-house? Agency? Hybrid?
+- **Audience Size:** Monthly visits? Concurrent users? [APP: Expected users? Concurrent active users?]
+- **Content Volume:** How much content? Update frequency? [APP: Data volume?]
+- **Geographic Scope:** Single region? Global? [APP: Latency requirements?]
+- **Device Requirements:** Desktop-first? Mobile-critical?
+- **Technical Constraints:** Existing systems to integrate? Budget limits? [APP: Legacy systems? Tech debt?]
+- **Team Constraints:** In-house team? Agency? Hybrid? [APP: Contract developers? Offshore?]
 
-#### Project Kickoff Checklist: Hybrid Path
+#### Project Kickoff Checklist
 
 - [ ] **Discovery Complete**
 
@@ -1153,84 +459,120 @@ Projects using a headless CMS with a custom frontend, combining content manageme
   - [ ] Success metrics defined (see [Baseline Success Metrics](#baseline-success-metrics))
   - [ ] Audience/scale understood
   - [ ] Budget & timeline confirmed
-  - [ ] Why headless? (Rationale clear)
+  - [ ] [APP] User research completed, market analysis done
+  - [ ] [APP] MVP scope locked, core features identified
+  - [ ] [HYB] Why headless? (Rationale clear)
 
-- [ ] **Content Strategy**
+- [ ] **Content Strategy** [CMS/HYB]
 
-  - [ ] Content types and structure defined
-  - [ ] Content migration plan (if applicable)
-  - [ ] Editorial workflow documented
-  - [ ] Approval process defined
-  - [ ] Team roles (content vs frontend) clear
-
-- [ ] **Headless CMS Selection**
-
-  - [ ] CMS platform chosen
-  - [ ] Content model documented
-  - [ ] API documented
-  - [ ] Integrations mapped
-  - [ ] Hosting/deployment planned
-
-- [ ] **Frontend Architecture**
-
-  - [ ] Frontend framework chosen
-  - [ ] Data fetching strategy (API calls, SSR, SSG, ISR?)
-  - [ ] Deployment strategy
-  - [ ] Performance targets set
-  - [ ] Design system planned
-
-- [ ] **Integration & Communication**
-
-  - [ ] API contracts defined
-  - [ ] Content to frontend flow documented
-  - [ ] Preview system planned (see draft content before publish)
-  - [ ] Deployment coordination process
-  - [ ] Monitoring/alerting across both systems
-
-- [ ] **Team & Access**
-
-  - [ ] Content team access to CMS configured
-  - [ ] Frontend team access to repositories/deployments
-  - [ ] Communication structure (standups, syncs)
-  - [ ] Decision-making process clear
-  - [ ] Escalation path for integration issues
+  - [ ] Content types identified
+  - [ ] Content structure documented (hierarchy, relationships)
+  - [ ] Existing content audit completed (if applicable)
+  - [ ] Migration plan (if needed)
+  - [ ] Editorial workflow defined
+  - [ ] Approval process documented
+  - [ ] [HYB] Team roles (content vs frontend) clear
 
 - [ ] **Technical Planning**
 
+  - [ ] [CMS] CMS platform selected
+  - [ ] [HYB] Headless CMS chosen, content model documented, API documented
+  - [ ] [APP] Data model designed (entities, relationships)
+  - [ ] [APP] API design sketched, architecture diagram created
+  - [ ] [APP] Frontend framework chosen
+  - [ ] [HYB] Frontend framework chosen, data fetching strategy determined
+  - [ ] Hosting plan determined
+  - [ ] Third-party integrations mapped
+  - [ ] Performance requirements documented
   - [ ] Security requirements documented (see [Baseline Security Questions](#baseline-security-questions))
   - [ ] Accessibility requirements defined (see [Accessibility Requirements](#accessibility-requirements))
   - [ ] Analytics plan documented (see [Analytics & Tracking](#analytics--tracking))
+  - [ ] [APP] Scalability plan sketched
 
-- [ ] **Migration Plan (if applicable)**
-  - [ ] Current system audit
-  - [ ] Content migration scripts
-  - [ ] Parallel run period (if needed)
-  - [ ] Rollback plan
+- [ ] **Team & Access**
 
-#### Red Flag Questions
+  - [ ] Project stakeholders identified
+  - [ ] Decision makers confirmed
+  - [ ] [CMS/HYB] Content editors/users identified, permission levels planned
+  - [ ] [APP] Team composition confirmed, skill gaps identified, tech lead/architect identified
+  - [ ] [HYB] Content team access to CMS configured, frontend team access to repositories/deployments
 
-- Is the headless approach justified, or is it overengineering?
-- Are the content team and frontend team isolated (poor communication)?
-- Is the content model too simple for a headless approach?
-- Are there critical integrations with uncertain timelines?
-- Is frontend deployment independent from content publishing?
-- Is there no preview system for content editors?
+- [ ] **Design & UX**
+
+  - [ ] Brand guidelines available
+  - [ ] Design direction confirmed
+  - [ ] [CMS] Template/page types defined
+  - [ ] [APP/HYB] User personas created, user journeys mapped
+  - [ ] [APP/HYB] Wireframes for core flows, design system started
+  - [ ] Design review cadence set
+
+- [ ] **DevOps & Infrastructure** [APP/HYB]
+
+  - [ ] Development environment documented
+  - [ ] Staging/testing environment planned
+  - [ ] Deployment process sketched
+  - [ ] Monitoring/logging strategy outlined
+  - [ ] [APP] CI/CD pipeline planned
+  - [ ] [HYB] API contracts defined, preview system planned, deployment coordination process
+
+- [ ] **Ongoing Support**
+  - [ ] Support model defined (agency-managed vs client-managed)
+  - [ ] Training needs identified
+  - [ ] Maintenance plan established
+  - [ ] [HYB] Migration plan (if applicable): current system audit, migration scripts, parallel run period, rollback plan
 
 ---
 
-### HYB-2: Technology Stack Selection
+### Technology Stack Selection
 
-#### Headless CMS Selection
+#### [CMS] Platform Considerations
+
+**Decision Framework:** Ease of use, content modeling fit, theme/plugin ecosystem, hosting options, scalability, security track record, support availability, cost (license/hosting/plugins/maintenance), long-term viability.
+
+**Theme/Plugin Ecosystem:**
+
+- **Pre-built Themes:** Cost-benefit analysis (speed vs customization needs)
+- **Plugin Strategy:** Critical vs nice-to-have plugins; vendor lock-in risks
+- **Custom Code:** Where's the line between configuration and custom development?
+- **Performance:** Do popular plugins add bloat? Are there lightweight alternatives?
+
+**Stack Decision Framework:**
+
+| Decision     | Considerations                                    |
+| ------------ | ------------------------------------------------- |
+| **Platform** | Ease of use, content model fit, ecosystem, cost   |
+| **Theme**    | Design fit, customization effort, performance     |
+| **Plugins**  | Essential only? Performance impact? Alternatives? |
+| **Hosting**  | Managed or self-hosted? Auto-scaling needed?      |
+| **Database** | Does CMS include? Performance requirements?       |
+
+#### [APP] Stack Considerations
+
+**Frontend Framework:** Team expertise, project type (SPA/SSR/static/mobile), performance requirements, scalability, ecosystem size, hiring market, maintenance cadence, learning curve, tooling quality.
+
+**Backend/API:** Language/framework (team expertise, performance, ecosystem), API style (REST/GraphQL/gRPC), authentication (JWT/OAuth/sessions), real-time needs (WebSockets/SSE), background jobs, caching strategy, scalability approach, testing framework.
+
+**Database:** Data type (relational/document/graph/time-series), query patterns, scalability (vertical/horizontal/sharding), consistency requirements, performance needs, operational burden (managed vs self-hosted), cost, backup/recovery criticality.
+
+**Stack Decision Framework:**
+
+| Layer         | Considerations                                 | Options                                |
+| ------------- | ---------------------------------------------- | -------------------------------------- |
+| **Frontend**  | Team skill, performance, ecosystem             | React, Vue, Angular, Svelte, etc.      |
+| **Backend**   | Language, performance, team expertise          | Node, Python, Java, Go, Ruby, etc.     |
+| **Database**  | Data model, scalability, consistency           | PostgreSQL, MongoDB, DynamoDB, etc.    |
+| **Hosting**   | Cost, scalability, management burden           | AWS, GCP, Azure, Heroku, etc.          |
+| **Real-time** | Needed? WebSockets, polling, or cloud service? | Socket.io, GraphQL subscriptions, etc. |
+
+**Third-party Integrations:** Payment processing (Stripe, Square, PayPal), email (SendGrid, Mailgun, AWS SES), analytics (Google Analytics, Mixpanel, custom), storage (AWS S3, GCS, self-hosted), authentication (Auth0, Firebase, custom), monitoring (DataDog, New Relic, Sentry).
+
+#### [HYB] Headless CMS Selection
 
 **Decision Framework:** Content model fit, API (REST/GraphQL, performance, rate limits), editorial workflow/versioning/scheduling, integration capabilities/webhooks, hosting (managed/self-hosted/cost), preview capabilities, API performance at scale, learning curve, pricing transparency.
 
-#### Frontend Framework Considerations
+**Frontend Framework:** Team expertise, performance needs (SSR/SSG/ISR/client-side), scalability, ecosystem (headless CMS libraries), SEO requirements, real-time needs (live updates/webhooks).
 
-**Decision Framework:** Team expertise, performance needs (SSR/SSG/ISR/client-side), scalability, ecosystem (headless CMS libraries), SEO requirements, real-time needs (live updates/webhooks).
-
-#### API Layer & Data Fetching
-
-**Strategies:**
+**Data Fetching Strategies:**
 
 - **Client-side Fetching:** Simple, but slower initial load
 - **Server-side Rendering (SSR):** Fetch on each request; good for dynamic content
@@ -1238,21 +580,9 @@ Projects using a headless CMS with a custom frontend, combining content manageme
 - **Incremental Static Regeneration (ISR):** Rebuild specific pages on-demand
 - **Webhooks:** CMS triggers rebuilds when content changes
 
-**Choice depends on:**
+**Choice depends on:** Content change frequency, real-time update needs, deployment frequency, number of pages/content items.
 
-- How often does content change?
-- Do you need real-time updates?
-- What's your deployment frequency?
-- How many pages/content items?
-
-#### Integration Points
-
-- **Content to Frontend:** How does content get to the frontend? API calls? Build-time data?
-- **Frontend to CMS:** User feedback? Comments? Dynamic data back to CMS?
-- **Preview System:** Can editors preview changes before publishing?
-- **Webhooks:** Should publishing trigger frontend rebuild?
-
-#### Hybrid Stack Decision Framework
+**Stack Decision Framework:**
 
 | Decision               | Considerations                                     | Options                            |
 | ---------------------- | -------------------------------------------------- | ---------------------------------- |
@@ -1261,83 +591,49 @@ Projects using a headless CMS with a custom frontend, combining content manageme
 | **Data Fetching**      | Update frequency, real-time needs, deployment      | SSG, SSR, ISR, client-side         |
 | **Hosting**            | Cost, performance, scalability                     | Vercel, Netlify, AWS, etc.         |
 
-#### Migration Considerations: CMS to Headless
-
-**If you're migrating from traditional CMS:**
-
-1. **Content Audit:** What content exists? Audit for quality and structure.
-2. **Content Modeling:** Redesign content model for headless (may be more structured).
-3. **Migration Scripts:** Automated migration from old to new CMS.
-4. **Parallel Run:** Run both systems in parallel; test thoroughly before cutover.
-5. **Rollback Plan:** If headless launch fails, can you revert quickly?
-6. **Team Training:** New CMS interface? New frontend deployment? Team needs training.
-7. **Testing:** Content works in both systems? API returns correct data?
-
 #### Key Trade-offs
 
-- **CMS Flexibility vs Simplicity:** Headless CMSes are often more powerful but less user-friendly
-- **Frontend Freedom vs Complexity:** Custom frontend = more control but more to maintain
-- **Real-time vs Performance:** Real-time updates need more infrastructure; static is fast but stale
-- **Team Split vs Coordination:** Separate teams move faster but need good communication
-
-#### Red Flag Questions
-
-- Is the headless approach overengineering this project?
-- Is the content model too fluid for a structured headless CMS?
-- Are frontend and CMS teams siloed with poor communication?
-- Is the data fetching strategy vague or problematic?
-- Is there no preview system for content editors?
-- Are you migrating from a system but no rollback plan?
+- **Speed to Launch vs Long-term Customization:** [CMS] Pre-built themes are fast; custom development is flexible | [APP] Startups use cutting-edge; enterprises use stable
+- **Ease of Use vs Power:** [CMS] More user-friendly = fewer advanced features | [APP] Minimal frameworks are flexible; full frameworks are opinionated
+- **Cost vs Features:** [CMS] More plugins and customization = higher cost | [APP/HYB] Managed services = operational simplicity; self-hosted = cost savings + control
+- **Vendor Lock-in vs Productivity:** [CMS] Popular CMS = large ecosystem but harder to migrate | [APP] Consistency vs Performance: Strong consistency is slower; eventual consistency is faster
 
 ---
 
-### HYB-3: Hosting & Infrastructure
+### Hosting & Infrastructure
 
 #### Resource Requirements
 
-Use the [Application Resource Requirements Checklist](#application-resource-requirements-checklist) to determine needs for each layer.
+Use the [Application Resource Requirements Checklist](#application-resource-requirements-checklist) to determine hosting tier.
 
-**Quick Assessment:**
+| Tier         | CMS                                             | Custom App                                    | Hybrid                                         |
+| ------------ | ----------------------------------------------- | --------------------------------------------- | ---------------------------------------------- |
+| **Default**  | <50k visits, static content, standard plugins   | <10k MAU, internal tools, predictable traffic | Static CMS, low updates, SSG frontend          |
+| **Moderate** | 50k-500k visits, e-commerce, custom plugins     | 10k-100k MAU, some real-time features         | Dynamic CMS, SSR frontend, moderate API volume |
+| **Premium**  | >500k visits, complex queries, multiple editors | >100k MAU, global, strict SLA, real-time data | High-volume API, ISR, complex integrations     |
 
-- **Backend (CMS) Resources:**
+#### Deployment Environment Options
 
-  - Static content, moderate updates → default hosting
-  - Dynamic content, high volume → moderate to premium resources
+| Option                               | Pros                                   | Cons                                  | Best For              |
+| ------------------------------------ | -------------------------------------- | ------------------------------------- | --------------------- |
+| **Managed CMS Hosting**              | Auto-scaling, support, updates handled | Less control, higher cost             | CMS projects          |
+| **PaaS (Heroku, Railway)**           | Simple deploy, auto-scaling, support   | Higher cost, less control             | APP rapid iteration   |
+| **Containers (Docker/K8s)**          | Portable, scalable, reproducible       | Operational complexity, DevOps needed | APP/HYB multi-env     |
+| **Static + CDN (Vercel, Netlify)**   | Simple, fast, cheap, auto-scaling      | Rebuilds needed for updates           | HYB frontend          |
+| **Server (Next.js, Nuxt)**           | Real-time updates, dynamic content     | More operational burden               | HYB dynamic content   |
+| **Traditional Cloud (EC2, GCP VMs)** | Control, scalability, cost-effective   | Operational burden, manual scaling    | APP established teams |
 
-- **Frontend Resources:**
-  - Static site generation → CDN + low compute (cheap)
-  - Server-side rendering → moderate compute needed
-  - Many pages → scalable hosting needed
+#### Scaling Considerations
 
-#### Deployment Environment: Backend (CMS)
+- **Traffic Spikes:** Does hosting auto-scale? What's the trigger and delay?
+- **Database Performance:** [CMS] Will database handle peak load? Caching strategy? | [APP] Read replicas? Sharding needs? | [HYB] CMS API performance? Read replicas?
+- **CDN Integration:** Should static assets be served from CDN? [HYB] Cache hit rate acceptable?
+- **Backup & Recovery:** How often? Automated? Tested? [HYB] Both CMS and frontend backed up?
+- **Build Process:** [HYB] Can build process handle large content volumes? Rebuild time acceptable? Webhooks to trigger rebuilds?
 
-- **Managed Headless CMS:** Support, scaling, updates handled
-- **Self-hosted:** More control, more operational burden
+#### Migration Considerations [HYB]
 
-#### Deployment Environment: Frontend
-
-| Option                                     | Pros                                       | Cons                           | Best For                          |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------ | --------------------------------- |
-| **Static Hosting + CDN (Vercel, Netlify)** | Simple, fast, cheap, auto-scaling          | Rebuilds needed for updates    | Most headless sites               |
-| **Server (Next.js, Nuxt)**                 | Real-time updates, dynamic content         | More operational burden        | Dynamic content, personalization  |
-| **Hybrid (ISR)**                           | Fast initial load, updates without rebuild | Complexity, cache invalidation | Large sites with frequent updates |
-
-#### Scaling Considerations: Backend
-
-- Can the CMS API handle your traffic?
-- Do you need read replicas for the database?
-- Is caching in place (Redis, CDN)?
-
-#### Scaling Considerations: Frontend
-
-- Does your CDN auto-scale?
-- Can your build process handle large content volumes?
-- Is rebuild time acceptable?
-- Do you need webhooks to trigger rebuilds?
-
-#### Migration Considerations: Hosting
-
-**If you're migrating from traditional CMS hosting:**
+If migrating from traditional CMS hosting:
 
 1. **Parallel Infrastructure:** Run old and new systems during transition
 2. **DNS Cutover:** When do you switch traffic?
@@ -1345,321 +641,367 @@ Use the [Application Resource Requirements Checklist](#application-resource-requ
 4. **Downtime Planning:** Some migration requires downtime; plan and communicate
 5. **Rollback:** Can you quickly revert if something fails?
 
-#### Red Flag Questions
-
-- Is CMS API performance adequate for your traffic?
-- Is rebuild time too long for your content update frequency?
-- Do you lack a CDN for global delivery?
-- Is there no plan for content sync during migration?
-- Are scaling limits unclear or problematic?
-
 ---
 
-### HYB-4: Performance & Optimization
+### Performance & Optimization
 
-#### Hybrid-Specific Performance Priorities
+#### Performance Priorities by Path
 
-CMS API performance (<200ms), frontend load time (<3s static, <2s SSG), TTFB (server-rendered), rebuild time (<10m for SSG), cache hit rate (CDN/app).
+| Priority        | CMS                           | Custom App                           | Hybrid                             |
+| --------------- | ----------------------------- | ------------------------------------ | ---------------------------------- |
+| **Page Load**   | <3s full page load            | <3s initial load, fast interactions  | <3s static, <2s SSG                |
+| **API/Backend** | TTFB <600ms                   | API <200ms, DB queries <100ms        | CMS API <200ms                     |
+| **Throughput**  | Handle traffic spikes         | Requests/sec, concurrent users       | Rebuild time <10m (SSG)            |
+| **Caching**     | Browser/server/CDN cache      | Application-level (Redis), CDN, HTTP | CDN/app cache, cache hit rate >90% |
+| **Other**       | Plugin audit, DB optimization | Uptime SLA (99%, 99.9%, 99.99%?)     | TTFB (server-rendered)             |
 
 #### Optimization Targets & Budgets
 
-- **API Latency:** p99 <500ms
-- **Frontend Load:** <3s (SSG much faster)
+- **Page Load:** <3 seconds (desktop), <5 seconds (mobile)
 - **Core Web Vitals:** LCP <2.5s, FID <100ms, CLS <0.1
-- **Rebuild Time:** <10 minutes for full site (depends on size)
-- **Cache Hit Rate:** >90% for static assets
+- **TTFB:** <600ms [CMS] | <200ms [APP API] | <200ms [HYB CMS API]
+- **Asset Size:** Images optimized, code minified
+- **API Latency:** [APP] p99 <500ms | [HYB] p99 <500ms
+- **Uptime:** [APP] Define SLA (e.g., 99.9% = 43 minutes downtime/month)
+- **Rebuild Time:** [HYB] <10 minutes for full site (depends on size)
 
 #### Monitoring Approach
 
-- **CMS Monitoring:** API response time, query performance
-- **Frontend Monitoring:** Page load, Core Web Vitals, user experience
-- **CDN Monitoring:** Cache hit rate, edge performance
-- **Build Monitoring:** Rebuild time, success/failure rate
-- **Alerting:** Performance degradation, failed builds
+- **Real User Monitoring (RUM):** Google Analytics, Sentry
+- **Synthetic Monitoring:** Regular performance tests from multiple locations
+- **Application Performance Monitoring (APM):** [APP] DataDog, New Relic, Sentry
+- **Database Monitoring:** [APP/HYB] Query performance, slow queries, index usage
+- **Infrastructure Monitoring:** [APP] CPU, memory, disk, network, costs
+- **Build Monitoring:** [HYB] Rebuild time, success/failure rate
+- **Alerting:** Set thresholds; alert when performance degrades
+- **Regular Audits:** Monthly performance reviews
 
 #### Performance Optimization Tactics
 
-**Backend (CMS):**
+**Caching:**
 
-- Database optimization, caching, API efficiency
+- [CMS] Page caching, object caching, database query caching
+- [APP] Application-level (Redis), CDN, HTTP caching
+- [HYB] CDN and application caching, caching headers and cache invalidation
+
+**Database:**
+
+- [CMS] Optimize queries, remove old revisions/drafts
+- [APP] Indexes, query optimization, replication for reads
+- [HYB] Database optimization, caching, API efficiency
 
 **Frontend:**
 
 - Code splitting, lazy loading, image optimization, minification
-- Efficient data fetching (only needed fields)
-- CDN for all static assets
+- [HYB] Efficient data fetching (only needed fields)
+- [APP] Bundle size monitoring
 
-**Integration:**
+**API Design:** [APP]
+
+- Pagination, filtering, sparse fieldsets (avoid over-fetching)
+
+**Infrastructure:**
+
+- Right-sized instances, auto-scaling, CDN
+- [APP] Profiling to identify bottlenecks before optimizing
+
+**Integration:** [HYB]
 
 - Webhook-triggered rebuilds for content changes
 - Incremental Static Regeneration (ISR) for large sites
-- Caching headers and cache invalidation
-
-#### Red Flag Questions
-
-- Is CMS API slow? Have you benchmarked it?
-- Is rebuild time unacceptably long?
-- Is the frontend bundle size growing unchecked?
-- Is there no CDN, or is cache hit rate low?
-- Are Core Web Vitals failing?
 
 ---
 
-### HYB-5: Project Management & Workflow
+### Project Management & Workflow
 
 #### Team Coordination Structure
 
-**Two-Team Model (common for hybrid):**
+**Roles by Path:**
 
-**Content/CMS Team:**
+**[CMS]**
 
-- Content strategist/editor
-- CMS administrator
-- PM (content focus)
+- Project Manager, CMS Engineer, Designer, Content Lead, Client Stakeholder
 
-**Frontend/Engineering Team:**
+**[APP]**
 
-- Frontend engineers
-- DevOps/Infrastructure
-- PM (product focus)
+- Product Manager, Engineering Lead, Frontend Engineer(s), Backend Engineer(s), QA/Testing, Designer, DevOps (if team is large)
 
-**Shared Roles:**
+**[HYB]** (Two-team model common)
 
-- Product owner (overall vision)
-- Designer (UX/content presentation)
-- QA/Testing
+- Content/CMS Team: Content strategist/editor, CMS administrator, PM (content focus)
+- Frontend/Engineering Team: Frontend engineers, DevOps/Infrastructure, PM (product focus)
+- Shared: Product owner, Designer, QA/Testing
 
 **Communication:**
 
-- Daily stand-ups (brief, async preferred)
-- Weekly sync (CMS team + frontend team)
+- Daily stand-ups (brief, async or sync)
+- Weekly planning/sync meetings [APP/HYB] | Weekly stand-ups [CMS]
 - Bi-weekly demos to stakeholders
-- Bi-weekly retrospectives
-- Clear decision log and escalation path
+- Bi-weekly retrospectives [APP/HYB]
+- Async updates on blockers
+- Clear decision log
 
 #### Timeline Phases
 
-| Phase           | Lead   | Duration | Key Activities                                                    | Deliverables                                       |
-| --------------- | ------ | -------- | ----------------------------------------------------------------- | -------------------------------------------------- |
-| **Discovery**   | PM     | 2-4w     | Requirements, content model, CMS selection, frontend architecture | Content model, CMS selected, frontend architecture |
-| **Design**      | Design | 2-4w     | Content structure, UX/UI design, design system, API contract      | Approved designs, content model in CMS, API docs   |
-| **Development** | Eng    | 6-12w    | CMS config, content migration, frontend dev, integration testing  | Staging site, content populated, features working  |
-| **Launch**      | PM     | 1-2w     | QA, content team training, docs, accessibility audit, go-live     | Live site, trained team, runbook                   |
-| **Post-Launch** | PM     | ongoing  | Monitoring, content updates, frontend iterations, handoff         | Stable site, handoff complete                      |
+| Phase           | Lead   | Duration                               | Key Activities                                          | Deliverables                     | Path Notes                    |
+| --------------- | ------ | -------------------------------------- | ------------------------------------------------------- | -------------------------------- | ----------------------------- | ----------------------------------------- | -------------------------------------------------------- |
+| **Discovery**   | PM     | 1-2w [CMS] / 2-4w [APP/HYB]            | Requirements, platform selection, hosting setup         | Platform selected, hosting live  | [CMS] Content structure       | [APP] Architecture design, MVP definition | [HYB] Content model, CMS + frontend selected             |
+| **Design**      | Design | 2-4w                                   | Wireframes/mockups, design system, accessibility review | Approved designs, design system  | [CMS] Admin UI, template list | [APP/HYB] UX research, component library  | [HYB] API contract                                       |
+| **Development** | Eng    | 2-6w [CMS] / 6-16w [APP] / 6-12w [HYB] | Platform config, development, integrations, testing     | Staging site, features working   | [CMS] Theme/plugins           | [APP] API/backend/frontend                | [HYB] CMS config, content migration, integration testing |
+| **Launch**      | PM     | 1-2w                                   | QA, training, accessibility audit, go-live              | Live site, trained team, runbook | [CMS] Content migration       | [APP] User docs                           | [HYB] Content team training                              |
+| **Post-Launch** | PM     | ongoing                                | Monitoring, optimization, handoff                       | Stable site, handoff complete    | All paths                     |
 
-**Total Typical Timeline:** 12-24 weeks
-
-#### Transition Phase (if migrating from CMS)
-
-**Additional phase between Discovery and Design:**
-
-1. **Infrastructure Setup:** New CMS deployed, frontend deployment process ready
-2. **Content Migration:** Automated migration scripts, manual cleanup
-3. **Testing:** Old system vs new system side-by-side
-4. **Parallel Run:** Both systems live; synced content
-5. **Cutover:** Switch traffic to new system
-6. **Monitoring:** Watch for issues post-cutover
-7. **Cleanup:** Decommission old system
+**Total Typical Timeline:** 8-16w [CMS] | 12-32w [APP] | 12-24w [HYB]
 
 > **Client Handoff:** See [Client Handoff Checklist](#client-handoff-checklist) in Section 1.
 
+#### Transition Phase [HYB]
+
+If migrating from traditional CMS, additional phase between Discovery and Design:
+
+1. Infrastructure setup (new CMS deployed, frontend deployment ready)
+2. Content migration (automated scripts, manual cleanup)
+3. Testing (old vs new system side-by-side)
+4. Parallel run (both systems live, synced content)
+5. Cutover (switch traffic)
+6. Monitoring (watch for issues post-cutover)
+7. Cleanup (decommission old system)
+
 #### Risk Management & Mitigation
 
-| Risk                                               | Mitigation                                            |
-| -------------------------------------------------- | ----------------------------------------------------- |
-| Team communication breakdown (content vs frontend) | Regular syncs, shared documentation, clear interfaces |
-| Content not ready for migration                    | Early content audit, migration scripts, testing       |
-| API changes break frontend                         | API versioning, contract testing, staged rollouts     |
-| Rebuild time unacceptable                          | Monitor build times, optimize as needed               |
-| Performance issues at launch                       | Load testing, performance budgets, monitoring         |
-| Content team frustrated with new CMS               | Training, documentation, support                      |
+| Risk                            | Mitigation                                                        | Path    |
+| ------------------------------- | ----------------------------------------------------------------- | ------- |
+| Content not ready for migration | Start content audit early; assign clear ownership                 | CMS/HYB |
+| Scope creep                     | MVP locked [APP]; weekly scope management; formal change requests | All     |
+| Performance issues at launch    | Load testing in Phase 3; target metrics established               | All     |
+| Untrained staff post-launch     | Training sessions in Phase 4; documentation clear                 | CMS/HYB |
+| Plugin conflicts/instability    | Testing in staging; vendor support engaged                        | CMS     |
+| Integration delays              | Integration work starts early; APIs vetted                        | All     |
+| Team communication breakdown    | Regular syncs, shared documentation, clear interfaces             | HYB     |
+| API changes break frontend      | API versioning, contract testing, staged rollouts                 | HYB     |
+| Rebuild time unacceptable       | Monitor build times, optimize as needed                           | HYB     |
+| Unexpected technical blockers   | Architecture review early; tech spikes for unknowns               | APP     |
+| Lack of test coverage           | TDD approach; automated testing required                          | APP     |
+| Database scaling issues         | Schema designed for scale; read replicas planned                  | APP     |
 
 #### Communication Checkpoints
 
-- **End of Discovery:** Content model approved, CMS + frontend selected, go/no-go
-- **End of Design:** API contract finalized, design approved, no surprises
-- **Mid-Development:** Teams on track? Integration issues? Blockers?
-- **Pre-Launch:** Content migrated? Frontend complete? Performance acceptable? Go/no-go
-- **Post-Launch:** Performance good? Content team productive? Issues addressed?
-
-#### Transition Checkpoints (if migrating)
-
-- **Infrastructure Ready:** New systems deployed and tested
-- **Migration Scripts:** Content migrated successfully; testing passed
-- **Parallel Run:** Both systems live and synced; confidence high
-- **Cutover:** Traffic switched; monitoring active
-- **Post-Cutover:** Issues resolved, rollback unnecessary
-
-#### Red Flag Questions
-
-- Are the content and frontend teams not communicating effectively?
-- Is the content model causing friction between teams?
-- Is the migration taking longer than expected?
-- Is rebuild time or API performance blocking progress?
-- Is the content team resisting the new CMS?
+- **End of Discovery:** Platform selected, requirements approved, go/no-go decision
+- **End of Design:** Design approved, no surprises, timeline reconfirmed | [HYB] API contract finalized
+- **Mid-Development:** On track? Blockers? Velocity realistic?
+- **Pre-Launch:** All testing complete, team trained, go-live plan finalized | [HYB] Content migrated? Frontend complete?
+- **Post-Launch:** Issues resolved? Performance acceptable? | [HYB] Content team productive?
 
 ---
 
-### HYB-6: Security Considerations
+### Security Considerations
 
 > **Reference:** See [Baseline Security Questions](#baseline-security-questions) for universal security checklist.
 
-#### Hybrid-Specific Security Concerns
+#### Path-Specific Attack Surfaces
 
-- **API Layer:** CMS API is a new attack surface; needs protection
-- **Content Editing:** Who can edit content? Versioning and rollback?
-- **Deployment:** Frontend deployment process; who can deploy?
-- **Data Sync:** Ensuring data consistency between CMS and frontend cache
-- **Webhooks:** CMS->Frontend webhooks; can be misused
-- **Dependency Risk:** Both CMS platform and frontend framework have supply chain risk
+**[CMS]**
+
+- Plugin vulnerabilities (outdated plugins are common attack vectors)
+- User account compromise (weak passwords, brute force attacks)
+- SQL injection (less common in modern CMS but possible with custom code)
+- Malware (compromised plugins or themes can inject malware)
+- Unauthorized access (user permissions misconfigured)
+- Data exposure (sensitive data in backups or logs)
+
+**[APP]**
+
+- Authentication attacks (brute force, phishing, weak password resets)
+- API attacks (unauthorized access, injection attacks, rate limiting bypass)
+- Data access (unauthorized data access, IDOR)
+- Third-party risk (compromised dependencies, supply chain attacks)
+- Infrastructure (unpatched servers, misconfigured cloud permissions)
+- User data (improper handling, exposure in logs, backups)
+
+**[HYB]**
+
+- API layer (CMS API is a new attack surface; needs protection)
+- Content editing (who can edit content? versioning and rollback?)
+- Deployment (frontend deployment process; who can deploy?)
+- Data sync (ensuring data consistency between CMS and frontend cache)
+- Webhooks (CMS->Frontend webhooks; can be misused)
+- Dependency risk (both CMS platform and frontend framework have supply chain risk)
 
 #### Security Best Practices
 
-**CMS Layer:**
+**Universal:**
 
-- Keep CMS updated
-- Limit API access (authentication, rate limiting)
-- Backup content regularly
-- Monitor API access
+- Secure by default (security built in, not bolted on)
+- Least privilege (users have minimum required access)
+- Defense in depth (multiple layers of security)
+- Input validation (validate all input; whitelist expected patterns)
+- Output encoding (escape output; prevent XSS attacks)
+- Dependency management (keep libraries updated; monitor for vulnerabilities)
+- Logging & monitoring (log security events; alert on suspicious activity)
+- Code review (security-focused code reviews; threat modeling)
+- Testing (security testing in QA; penetration testing before launch)
+- Documentation (document security architecture and decisions)
 
-**Frontend Layer:**
+**Path-Specific:**
 
-- Keep dependencies updated
-- Don't expose secrets (API keys, tokens)
-- Use HTTPS/TLS
-- Validate all input
-
-**Integration:**
-
-- Authenticate webhooks (signed, validated)
-- Encrypt data in transit
-- Log all API calls
-- Monitor for suspicious activity
+- **[CMS]** Keep everything updated (CMS, plugins, themes, server OS); limited plugin ecosystem; WAF for high-traffic sites
+- **[APP]** Authentication/authorization logic reviewed; rate limits on login/API endpoints; infrastructure as code
+- **[HYB]** CMS API secured (authentication, rate limiting); webhooks authenticated (signed, validated); secrets not exposed in frontend code
 
 #### Data Handling
 
-- **Content Data:** Where's it stored (CMS)? Who has access?
-- **User Data:** If users can comment/contribute, how's it protected?
-- **Backups:** CMS content backed up? Accessible if needed?
-- **Compliance:** Document how content and user data are handled
-
-#### Red Flag Questions
-
-- Is the CMS API accessible without authentication?
-- Are there no rate limits on the CMS API?
-- Are secrets (API keys) exposed in frontend code?
-- Is there no backup or disaster recovery plan for content?
-- Are webhooks unsigned/unauthenticated?
-- Is there no logging of CMS API access?
+- **Customer Data:** Where's it stored? How long? Who has access? [CMS] What data do plugins/integrations access?
+- **Encryption:** What data is encrypted? In transit and at rest?
+- **Backups:** Encrypted? Stored securely? Access controlled? [HYB] Both CMS and frontend backed up?
+- **Compliance:** Document data handling for regulations (GDPR, CCPA, etc.)
+- **Data Retention:** Delete data when no longer needed
+- **User Rights:** Can users export/delete their data? Implement easily.
 
 ---
 
-## Section 3: Path Evolution Principles
+## Section 4: Path Evolution
 
-### When & Why Projects Evolve Between Paths
+### When & Why Projects Evolve
 
-Projects don't always start and stay in one path. As businesses grow and requirements change, the technical approach often needs to evolve.
+Projects don't always start and stay in one path. Common triggers: growth, competitive pressure, team capability, user experience needs, performance limits, cost optimization, feature requests.
 
-**Common Evolution Triggers:**
+**Evolution Paths:**
 
-1. **Growth:** More content, more users, more features -> more complexity needed
-2. **Competitive Pressure:** New features require custom development
-3. **Team Capability:** Team grows; can now handle more complex solutions
-4. **User Experience:** Needs exceed what platform can deliver
-5. **Performance:** Outgrown platform limits; need custom infrastructure
-6. **Cost:** Initial choice too expensive; need to optimize
-7. **Feature Requests:** Users want features that don't fit the platform
+| From → To               | Trigger                                | Timeline   | Effort      | Key Risks                                 |
+| ----------------------- | -------------------------------------- | ---------- | ----------- | ----------------------------------------- |
+| **CMS → Hybrid**        | Custom frontend needed, still need CMS | 2-4 months | Medium-high | Content migration, team training          |
+| **CMS → Custom App**    | Complex business logic, real-time data | 3-6 months | High        | Feature parity, data migration            |
+| **Hybrid → Custom App** | CMS bottleneck, need full control      | 4-8 months | High        | Maintaining two systems, data consistency |
 
----
+**Evolution Principles:**
 
-### CMS -> Hybrid Evolution
-
-**Trigger:** Client wants custom frontend/branding but still needs CMS for content management
-
-**Evolution Path:**
-
-1. Choose headless CMS (may export data from old CMS)
-2. Build frontend application
-3. Migrate content to new CMS
-4. Deploy frontend separately
-5. Decommission old CMS (or phase out)
-
-**Timeline:** 2-4 months  
-**Effort:** Medium-high  
-**Key Risks:** Content migration, team training, parallel operations
+- **Plan:** Don't over-architect (YAGNI), but design for growth; keep systems modular; document business logic
+- **Manage:** Parallel operation; plan data migration early; test feature parity; have rollback plan; communicate transition; minimize user disruption
+- **Cost-Benefit:** Is evolution worth the cost? Can current path + optimization meet needs? Does new path unlock something fundamental?
 
 ---
 
-### CMS -> Custom App Evolution
+## Appendix: Red Flag Questions
 
-**Trigger:** What started as a content site now has complex business logic, real-time data, or user interactions
+Consolidated warning signs organized by topic. If you answer "yes" to any of these, pause and reassess.
 
-**Evolution Path:**
+**Discovery & Requirements:**
 
-1. Assess why CMS is insufficient (performance? features? architecture?)
-2. Design custom app architecture
-3. Build custom app alongside CMS
-4. Migrate data/users to new app
-5. Retire old CMS
+- [CMS] Client asking for highly custom page layouts that don't fit template approach?
+- [CMS] Complex data relationships that don't align with standard content models?
+- [CMS] Performance critical (real-time data, leaderboards, complex queries)?
+- [CMS] Team lacks CMS experience but needs to manage it long-term?
+- [APP] MVP scope still unclear or expanding?
+- [APP] Team lacks experience with this type of application?
+- [APP] Critical integrations with uncertain timelines?
+- [APP] Data model overly complex?
+- [APP] Scalability an afterthought rather than part of initial design?
+- [HYB] Headless approach justified, or is it overengineering?
+- [HYB] Content team and frontend team isolated (poor communication)?
+- [HYB] Content model too simple for a headless approach?
+- [HYB] No preview system for content editors?
 
-**Timeline:** 3-6 months  
-**Effort:** High  
-**Key Risks:** Feature parity, data migration, user confusion during transition
+**Technology Stack:**
 
----
+- [CMS] Building design from scratch but CMS templates are limited?
+- [CMS] Custom data structures that don't fit CMS content model?
+- [CMS] Critical integrations unavailable for this platform?
+- [CMS] Plugin ecosystem unstable or poorly maintained?
+- [APP] Team unfamiliar with chosen stack?
+- [APP] Stack overly complex for the problem?
+- [APP] Database a poor fit for the data model?
+- [APP] Critical integrations unavailable for this stack?
+- [APP] Scaling strategy vague or non-existent?
+- [APP] Relying on new/unstable libraries?
+- [HYB] Content model too fluid for structured headless CMS?
+- [HYB] Data fetching strategy vague or problematic?
+- [HYB] Migrating from system but no rollback plan?
 
-### Hybrid -> Custom App Evolution
+**Hosting & Infrastructure:**
 
-**Trigger:** CMS becomes bottleneck; need full control over content and data
+- Hosting provider not actively maintaining platform version?
+- Can't scale quickly during predictable traffic spikes?
+- Database performance inadequate for content/traffic volume?
+- No documented backup and recovery plan?
+- Significant cost jump when outgrowing current tier?
+- [APP] Infrastructure not reproducible (IaC)?
+- [HYB] CMS API performance inadequate for traffic?
+- [HYB] Rebuild time too long for content update frequency?
+- [HYB] No CDN for global delivery?
+- [HYB] No plan for content sync during migration?
 
-**Evolution Path:**
+**Performance:**
 
-1. Evaluate whether full custom app is necessary (or just custom backend?)
-2. Design custom system
-3. Build in parallel with hybrid system
-4. Migrate content and users
-5. Retire headless CMS (may keep for some content)
+- Site slower than competitors in same space?
+- [CMS] Specific plugins causing performance degradation?
+- [CMS] TTFB consistently above 1 second?
+- [CMS] Caching not working as expected?
+- Core Web Vitals failing?
+- [APP] Hitting performance issues unexpectedly in production?
+- [APP] Database the bottleneck? Queries/indexes optimized?
+- [APP] Frontend bundle size growing unchecked?
+- [APP] API responses slow? N+1 query problems?
+- [APP] Lack visibility into production performance?
+- [HYB] CMS API slow? Benchmarked?
+- [HYB] Frontend bundle size growing unchecked?
+- [HYB] Cache hit rate low?
 
-**Timeline:** 4-8 months  
-**Effort:** High  
-**Key Risks:** Maintaining two systems, data consistency
+**Project Management:**
 
----
+- [CMS] Content team overwhelmed by CMS learning curve?
+- Timelines slipping? Where and why?
+- [CMS] CMS team blocking content team progress?
+- Critical third-party integrations delayed?
+- Performance testing revealing unexpected issues?
+- [APP] Scope expanding constantly? MVP in danger?
+- [APP] Team velocity declining? Why?
+- [APP] Architectural concerns not being addressed?
+- [APP] Testing falling behind (technical debt)?
+- [APP] Performance issues discovered late?
+- [APP] Stakeholder communication breaking down?
+- [HYB] Content and frontend teams not communicating effectively?
+- [HYB] Content model causing friction between teams?
+- [HYB] Migration taking longer than expected?
+- [HYB] Rebuild time or API performance blocking progress?
+- [HYB] Content team resisting new CMS?
 
-### General Evolution Principles
+**Security:**
 
-**Plan for Evolution:**
+- [CMS] Plugins outdated or no longer maintained?
+- No documented backup or disaster recovery plan?
+- [CMS] User permissions overly permissive (everyone is admin)?
+- Sensitive customer data stored in easy-to-access locations?
+- No monitoring or alerting for security issues?
+- [APP] App lacks HTTPS/TLS?
+- [APP] Passwords not hashed (or hashed with weak algorithms)?
+- [APP] No rate limits on login or API endpoints?
+- [APP] Authentication/authorization logic not reviewed?
+- [APP] Dependencies not monitored for vulnerabilities?
+- [APP] Sensitive data stored in logs or error messages?
+- [APP] No documented security testing process?
+- [APP] Third-party services over-privileged?
+- [HYB] CMS API accessible without authentication?
+- [HYB] No rate limits on CMS API?
+- [HYB] Secrets (API keys) exposed in frontend code?
+- [HYB] Webhooks unsigned/unauthenticated?
+- [HYB] No logging of CMS API access?
 
-- Don't over-architect for features you don't have yet (YAGNI)
-- But design with future growth in mind
-- Keep systems modular; easier to replace components
-- Document business logic and data models
-- Keep an audit of what features you have
+**QA & Testing:**
 
-**Managing Evolution:**
+- No testing strategy documented?
+- Test coverage an afterthought?
+- Accessibility tests being skipped?
+- UAT rushed or skipped?
+- Performance tests only run in production?
+- No regression testing after bug fixes?
 
-- **Parallel Operation:** Run old and new systems together briefly
-- **Data Migration:** Plan early; automate where possible
-- **Testing:** Test feature parity and performance before cutover
-- **Rollback Plan:** Can you quickly revert if needed?
-- **Team Communication:** Everyone understands the transition
-- **Minimize Disruption:** Users don't notice the transition
+**Path Evolution:**
 
-**Cost-Benefit Analysis:**
-
-- Is evolution worth the cost?
-- Can you meet user needs with current path plus optimization?
-- Or does new path fundamentally unlock something?
-
----
-
-### Red Flag Questions
-
-- Are you considering evolution due to poor execution vs true growth?
-- Is the new path significantly more complex and costly?
-- Do you lack resources to execute the evolution?
-- Is there a clear rollback plan if evolution fails?
-- Is the team trained for the new path?
+- Considering evolution due to poor execution vs true growth?
+- New path significantly more complex and costly?
+- Lack resources to execute the evolution?
+- No clear rollback plan if evolution fails?
+- Team not trained for new path?
 
 ---
 
