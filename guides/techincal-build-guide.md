@@ -4,6 +4,45 @@ A decision-focused guide for internal teams (Engineering, Design, Project Manage
 
 ---
 
+## Table of Contents
+
+- [Section 0: Path Selection Framework](#section-0-path-selection-framework)
+- [Section 1: Shared Foundations](#section-1-shared-foundations)
+  - [Baseline Stakeholder Questions](#baseline-stakeholder-questions)
+  - [Baseline Success Metrics](#baseline-success-metrics)
+  - [Baseline Security Questions](#baseline-security-questions)
+  - [Accessibility Requirements](#accessibility-requirements)
+  - [Analytics & Tracking](#analytics--tracking)
+- [Section 2: QA & Testing](#section-2-qa--testing)
+- [CMS Path](#cms-path)
+  - [CMS-1: Discovery & Requirements](#cms-1-discovery--requirements)
+  - [CMS-2: Technology Stack Selection](#cms-2-technology-stack-selection)
+  - [CMS-3: Hosting & Infrastructure](#cms-3-hosting--infrastructure)
+  - [CMS-4: Performance & Optimization](#cms-4-performance--optimization)
+  - [CMS-5: Project Management & Workflow](#cms-5-project-management--workflow)
+  - [CMS-6: Security Considerations](#cms-6-security-considerations)
+- [Custom App Path](#custom-app-path)
+  - [APP-1: Discovery & Requirements](#app-1-discovery--requirements)
+  - [APP-2: Technology Stack Selection](#app-2-technology-stack-selection)
+  - [APP-3: Hosting & Infrastructure](#app-3-hosting--infrastructure)
+  - [APP-4: Performance & Optimization](#app-4-performance--optimization)
+  - [APP-5: Project Management & Workflow](#app-5-project-management--workflow)
+  - [APP-6: Security Considerations](#app-6-security-considerations)
+- [Hybrid Path](#hybrid-path)
+  - [HYB-1: Discovery & Requirements](#hyb-1-discovery--requirements)
+  - [HYB-2: Technology Stack Selection](#hyb-2-technology-stack-selection)
+  - [HYB-3: Hosting & Infrastructure](#hyb-3-hosting--infrastructure)
+  - [HYB-4: Performance & Optimization](#hyb-4-performance--optimization)
+  - [HYB-5: Project Management & Workflow](#hyb-5-project-management--workflow)
+  - [HYB-6: Security Considerations](#hyb-6-security-considerations)
+- [Section 3: Path Evolution Principles](#section-3-path-evolution-principles)
+- [Embedded Resources](#embedded-resources)
+  - [Application Resource Requirements Checklist](#application-resource-requirements-checklist)
+  - [Hosting & Performance Notes](#hosting--performance-notes)
+  - [Quick Reference Cards](#quick-reference-cards)
+
+---
+
 ## Section 0: Path Selection Framework
 
 ### Quick Diagnostic: Which Path Are You On?
@@ -60,12 +99,12 @@ START: New Project
 │  │
 │  ├─ YES → Will you need a custom frontend separate from content management?
 │  │         │
-│  │         ├─ NO  → CMS PATH ✓
-│  │         └─ YES → HYBRID PATH ✓
+│  │         ├─ NO  → CMS PATH
+│  │         └─ YES → HYBRID PATH
 │  │
 │  └─ NO → Do you need full control over UI/UX and custom business logic?
 │          │
-│          ├─ YES → CUSTOM APP PATH ✓
+│          ├─ YES → CUSTOM APP PATH
 │          └─ NO  → Reconsider CMS Path
 │
 ```
@@ -76,7 +115,7 @@ START: New Project
 
 **CMS Path**
 
-- Platform: WordPress, Webflow, Contentful (traditional)
+- Platform: WordPress, Webflow, Drupal (traditional)
 - Hosting: Managed hosting, simple scaling
 - Development: Theme customization, plugin integration
 - Team: Small, generalist
@@ -92,7 +131,7 @@ START: New Project
 
 **Hybrid Path**
 
-- Platform: Headless CMS + Frontend Framework
+- Platform: Headless CMS (Contentful, Sanity, Strapi) + Frontend Framework
 - Hosting: CMS separately, frontend separately
 - Development: CMS structure + custom frontend
 - Team: Content/CMS specialists + frontend engineers
@@ -100,12 +139,15 @@ START: New Project
 
 ---
 
-## Section 1: Project Discovery & Requirements (CMS Path)
+## Section 1: Shared Foundations
 
-**Lead Department:** Project Management  
-**Supporting Departments:** Engineering, Design
+This section contains baseline requirements applicable to all project paths. Individual path sections reference and extend these foundations.
 
-### Stakeholder Questions
+---
+
+### Baseline Stakeholder Questions
+
+These questions apply to every project, regardless of path:
 
 - What are the primary business goals for this project?
 - Who are the primary users/audience?
@@ -113,25 +155,239 @@ START: New Project
 - How will success be measured?
 - What's the timeline from discovery to launch?
 - What's the budget range?
+- Who are the key decision-makers?
+- What are the hard constraints (budget, timeline, technology)?
 
-### Defining Scale & Constraints
+---
 
-- **Audience Size:** Monthly visits? Concurrent users?
-- **Content Volume:** How much content? Update frequency?
-- **Geographic Scope:** Single region? Global?
-- **Device Requirements:** Desktop-first? Mobile-critical?
-- **Technical Constraints:** Existing systems to integrate? Budget limits?
-- **Team Constraints:** In-house team? Agency? Hybrid?
+### Baseline Success Metrics
 
-### Success Metrics
+Track these across all projects:
 
-- Site performance (load time, uptime)
-- Content management efficiency (time to publish)
-- User engagement (bounce rate, pages per session)
-- Business goals (leads, conversions, signups)
-- Team satisfaction (ease of use, support needs)
+- **Performance:** Load time, uptime, responsiveness
+- **User Engagement:** Bounce rate, time on site, pages per session
+- **Business Goals:** Conversions, leads, revenue, signups
+- **Team Satisfaction:** Ease of maintenance, support burden
+- **Accessibility:** WCAG compliance level achieved
 
-### CMS-Specific Discovery Questions
+---
+
+### Baseline Security Questions
+
+These apply to all paths (path-specific security in individual sections):
+
+1. **Data Protection:** What data is being collected? How is it stored and encrypted?
+2. **User Authentication:** How are users logging in? Multi-factor authentication?
+3. **Access Control:** Who can access what? Principle of least privilege?
+4. **Third-party Risk:** What third-party services have access? What permissions?
+5. **Updates & Patching:** How are security updates applied? Automated?
+6. **Backups:** Are backups automated? Tested? Stored securely?
+7. **Monitoring:** Are security issues logged and monitored?
+8. **Compliance:** What regulations apply? (GDPR, CCPA, HIPAA, PCI-DSS, etc.)
+9. **Incident Response:** What's the plan if security is breached?
+
+---
+
+### Accessibility Requirements
+
+**Lead Department:** Design (with Engineering implementation)  
+**Supporting Departments:** PM, QA
+
+Accessibility is a baseline requirement for all projects. Address these during Discovery and validate during QA.
+
+#### WCAG Compliance Level
+
+- [ ] **Level A (minimum):** Basic accessibility—required for all projects
+- [ ] **Level AA (standard):** Industry standard—recommended for most projects
+- [ ] **Level AAA (enhanced):** Highest level—for accessibility-focused projects
+
+#### Core Accessibility Checklist
+
+**Visual:**
+
+- [ ] Color contrast meets WCAG standards (4.5:1 for normal text, 3:1 for large text)
+- [ ] Text is resizable up to 200% without loss of functionality
+- [ ] Information is not conveyed by color alone
+- [ ] Images have meaningful alt text (or empty alt for decorative images)
+- [ ] Focus indicators are visible
+
+**Navigation:**
+
+- [ ] All functionality is keyboard accessible
+- [ ] Focus order is logical and intuitive
+- [ ] Skip links are provided for repetitive content
+- [ ] Page titles are descriptive and unique
+
+**Content:**
+
+- [ ] Headings are hierarchical and descriptive
+- [ ] Links have descriptive text (not "click here")
+- [ ] Form fields have associated labels
+- [ ] Error messages are clear and identify the field
+
+**Media:**
+
+- [ ] Videos have captions
+- [ ] Audio has transcripts
+- [ ] Animations can be paused or disabled
+- [ ] No content flashes more than 3 times per second
+
+**Technical:**
+
+- [ ] Semantic HTML is used correctly
+- [ ] ARIA labels are used where needed (and correctly)
+- [ ] Pages work with screen readers (VoiceOver, NVDA, JAWS)
+- [ ] Site works with browser zoom and text-only zoom
+
+#### Accessibility Testing
+
+- **Automated Testing:** Run Lighthouse, axe, or WAVE during development
+- **Manual Testing:** Keyboard navigation, screen reader testing
+- **User Testing:** Include users with disabilities when possible
+- **Audit Cadence:** Test at end of each phase; full audit before launch
+
+#### Red Flag Questions
+
+- Is accessibility being deferred to "later"?
+- Are designers unaware of contrast requirements?
+- Is there no budget for accessibility testing?
+- Are interactive elements not keyboard accessible?
+- Is the site unusable without a mouse?
+
+---
+
+### Analytics & Tracking
+
+**Lead Department:** PM  
+**Supporting Departments:** Engineering
+
+Address analytics during Discovery; implement during Development.
+
+#### Analytics Planning Checklist
+
+- [ ] **Platform Selected:** Google Analytics, Mixpanel, Plausible, custom?
+- [ ] **Key Events Identified:** What user actions matter? (signups, purchases, downloads)
+- [ ] **Conversion Goals Defined:** What counts as success?
+- [ ] **Privacy/Consent:** Cookie consent banner needed? GDPR/CCPA compliance?
+- [ ] **Data Retention:** How long is data stored? Who has access?
+
+#### Path-Specific Considerations
+
+- **CMS Path:** Often plugin-based (easy setup, limited customization)
+- **Custom App Path:** Custom event tracking, more granular control
+- **Hybrid Path:** Track both CMS content performance and frontend interactions
+
+---
+
+## Section 2: QA & Testing
+
+**Lead Department:** Engineering (or dedicated QA if available)  
+**Supporting Departments:** PM, Design
+
+This section covers testing strategy applicable to all paths. Path-specific testing notes are included in each path's Project Management section.
+
+---
+
+### Testing Types
+
+| Type                      | What It Tests                        | When                               | Who                  |
+| ------------------------- | ------------------------------------ | ---------------------------------- | -------------------- |
+| **Unit Testing**          | Individual functions/components      | During development                 | Engineering          |
+| **Integration Testing**   | Components working together          | During development                 | Engineering          |
+| **End-to-End (E2E)**      | Full user flows                      | Before launch, after major changes | Engineering/QA       |
+| **Visual Regression**     | UI hasn't changed unexpectedly       | After UI changes                   | Engineering/QA       |
+| **Accessibility Testing** | WCAG compliance                      | Every phase                        | QA/Design            |
+| **Performance Testing**   | Load time, throughput, scalability   | Before launch                      | Engineering          |
+| **Security Testing**      | Vulnerabilities, penetration testing | Before launch                      | Engineering/External |
+| **User Acceptance (UAT)** | Meets business requirements          | Before launch                      | PM/Client            |
+
+---
+
+### Testing by Phase
+
+#### Discovery
+
+- [ ] Define acceptance criteria for features
+- [ ] Identify critical user flows to test
+- [ ] Establish performance targets
+- [ ] Document accessibility requirements
+
+#### Design
+
+- [ ] Review designs for accessibility (contrast, focus states, etc.)
+- [ ] Validate user flows are testable
+- [ ] Identify edge cases
+
+#### Development
+
+- [ ] Unit tests written alongside code
+- [ ] Integration tests for API/database interactions
+- [ ] Accessibility testing (automated + manual)
+- [ ] Code review includes test coverage check
+
+#### Launch
+
+- [ ] Full E2E test suite passes
+- [ ] Performance testing against targets
+- [ ] Security scan/penetration test (if applicable)
+- [ ] UAT sign-off from stakeholders
+- [ ] Accessibility audit complete
+
+#### Post-Launch
+
+- [ ] Monitor for production issues
+- [ ] Regression testing after bug fixes
+- [ ] Ongoing performance monitoring
+
+---
+
+### Test Coverage Expectations
+
+| Path           | Unit                | Integration      | E2E    | Accessibility | Performance |
+| -------------- | ------------------- | ---------------- | ------ | ------------- | ----------- |
+| **CMS**        | Low (mostly config) | Medium (plugins) | Medium | Required      | Required    |
+| **Custom App** | High                | High             | High   | Required      | Required    |
+| **Hybrid**     | Medium-High         | High (API layer) | High   | Required      | Required    |
+
+---
+
+### UAT (User Acceptance Testing) Process
+
+1. **Define Scope:** What features/flows are being tested?
+2. **Create Test Cases:** Based on user stories and acceptance criteria
+3. **Assign Testers:** Client stakeholders, internal PM, or end users
+4. **Execute Tests:** Testers follow test cases, document issues
+5. **Triage Issues:** Prioritize (blocker, critical, minor, nice-to-have)
+6. **Fix & Retest:** Engineering fixes; testers verify
+7. **Sign-off:** Formal approval to proceed to launch
+
+---
+
+### Red Flag Questions
+
+- Is there no testing strategy documented?
+- Is test coverage an afterthought?
+- Are accessibility tests being skipped?
+- Is UAT rushed or skipped?
+- Are performance tests only run in production?
+- Is there no regression testing after bug fixes?
+
+---
+
+## CMS Path
+
+For CMS-based projects (WordPress, Webflow, Drupal, etc.) where the client primarily manages content through an admin interface with predefined templates.
+
+---
+
+### CMS-1: Discovery & Requirements
+
+**Lead Department:** Project Management  
+**Supporting Departments:** Engineering, Design
+
+> **Reference:** See [Baseline Stakeholder Questions](#baseline-stakeholder-questions) for universal questions.
+
+#### CMS-Specific Discovery Questions
 
 - **Content Control:** How much control does the client need? Can templates work, or do they need custom layouts for each page?
 - **Content Types:** What types of content? Posts, pages, products, team members, testimonials, events?
@@ -141,12 +397,21 @@ START: New Project
 - **Integrations:** Email marketing, analytics, forms, payment processors?
 - **Long-term:** Will the client manage this themselves post-launch, or do you provide ongoing support?
 
-### Project Kickoff Checklist: CMS Path
+#### Defining Scale & Constraints
+
+- **Audience Size:** Monthly visits? Concurrent users?
+- **Content Volume:** How much content? Update frequency?
+- **Geographic Scope:** Single region? Global?
+- **Device Requirements:** Desktop-first? Mobile-critical?
+- **Technical Constraints:** Existing systems to integrate? Budget limits?
+- **Team Constraints:** In-house team? Agency? Hybrid?
+
+#### Project Kickoff Checklist: CMS Path
 
 - [ ] **Discovery Complete**
 
   - [ ] Business goals documented
-  - [ ] Success metrics defined
+  - [ ] Success metrics defined (see [Baseline Success Metrics](#baseline-success-metrics))
   - [ ] Audience/scale understood
   - [ ] Budget & timeline confirmed
 
@@ -172,7 +437,9 @@ START: New Project
   - [ ] Hosting plan determined
   - [ ] Third-party integrations mapped
   - [ ] Performance requirements documented
-  - [ ] Security requirements documented
+  - [ ] Security requirements documented (see [Baseline Security Questions](#baseline-security-questions))
+  - [ ] Accessibility requirements defined (see [Accessibility Requirements](#accessibility-requirements))
+  - [ ] Analytics plan documented (see [Analytics & Tracking](#analytics--tracking))
 
 - [ ] **Design & Brand**
 
@@ -186,7 +453,7 @@ START: New Project
   - [ ] Training needs identified
   - [ ] Maintenance plan established
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is the client asking for highly custom page layouts that don't fit template approach?
 - Does this project have complex data relationships that don't align with standard content models?
@@ -196,12 +463,12 @@ START: New Project
 
 ---
 
-## Section 2: Technology Stack Selection (CMS Path)
+### CMS-2: Technology Stack Selection
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management, Design
 
-### CMS Platform Considerations
+#### CMS Platform Considerations
 
 **Decision Framework:**
 
@@ -216,21 +483,21 @@ START: New Project
 9. **Cost:** License fees, hosting, plugins, customization, ongoing maintenance?
 10. **Long-term:** Is it actively maintained? Will it still be relevant in 3-5 years?
 
-### Theme/Plugin Ecosystem
+#### Theme/Plugin Ecosystem
 
 - **Pre-built Themes:** Cost-benefit analysis (speed vs customization needs)
 - **Plugin Strategy:** Critical vs nice-to-have plugins; vendor lock-in risks
 - **Custom Code:** Where's the line between configuration and custom development?
 - **Performance:** Do popular plugins add bloat? Are there lightweight alternatives?
 
-### Hosting Implications
+#### Hosting Implications
 
 - **Managed vs Self-Hosted:** Trade-offs (support vs control)
 - **Scalability:** Can hosting auto-scale during traffic spikes?
 - **Backup & Recovery:** What's the backup strategy?
 - **CDN:** Is a CDN necessary? Included or additional cost?
 
-### CMS Stack Decision Framework
+#### CMS Stack Decision Framework
 
 | Decision     | Considerations                                    |
 | ------------ | ------------------------------------------------- |
@@ -240,14 +507,14 @@ START: New Project
 | **Hosting**  | Managed or self-hosted? Auto-scaling needed?      |
 | **Database** | Does CMS include? Performance requirements?       |
 
-### Key Trade-offs
+#### Key Trade-offs
 
 - **Speed to Launch vs Long-term Customization:** Pre-built themes are fast; custom development is flexible
 - **Ease of Use vs Power:** More user-friendly = fewer advanced features
 - **Cost vs Features:** More plugins and customization = higher cost
 - **Vendor Lock-in vs Productivity:** Popular CMS = large ecosystem but harder to migrate
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Are you building the design from scratch but CMS templates are limited?
 - Does the project have custom data structures that don't fit the CMS content model?
@@ -257,14 +524,14 @@ START: New Project
 
 ---
 
-## Section 3: Hosting & Infrastructure (CMS Path)
+### CMS-3: Hosting & Infrastructure
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Resource Requirements
+#### Resource Requirements
 
-Use the **Application Resource Requirements Checklist** to determine your hosting tier.
+Use the [Application Resource Requirements Checklist](#application-resource-requirements-checklist) to determine your hosting tier.
 
 **Quick Assessment for CMS:**
 
@@ -288,7 +555,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
   - Complex integrations
   - Multiple concurrent editors
 
-### Deployment Environment Options
+#### Deployment Environment Options
 
 | Option                                    | Pros                                   | Cons                               | Best For                              |
 | ----------------------------------------- | -------------------------------------- | ---------------------------------- | ------------------------------------- |
@@ -297,14 +564,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 | **Container Hosting (Docker)**            | Scalability, consistency               | More complexity, DevOps needed     | Complex setups, multiple environments |
 | **Serverless**                            | Auto-scaling, pay-per-use              | Not ideal for traditional CMS      | Rarely used for CMS                   |
 
-### Scaling Considerations
+#### Scaling Considerations
 
 - **Traffic Spikes:** Does your hosting auto-scale? What's the trigger and delay?
 - **Database Performance:** Will your database handle peak load? Caching strategy?
 - **CDN Integration:** Should static assets be served from CDN?
 - **Backup & Recovery:** How often? Automated? Tested?
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is your hosting provider actively maintaining the platform version you're on?
 - Can you scale quickly during predictable traffic spikes (campaigns, launches)?
@@ -314,12 +581,12 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 4: Performance & Optimization (CMS Path)
+### CMS-4: Performance & Optimization
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### CMS-Specific Performance Priorities
+#### CMS-Specific Performance Priorities
 
 1. **Page Load Time:** Target <3s full page load
 2. **Time to First Byte (TTFB):** Server response time
@@ -328,21 +595,21 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 5. **Plugin Performance:** Each plugin has cost; audit regularly
 6. **Content Delivery:** Static assets via CDN
 
-### Optimization Targets & Budgets
+#### Optimization Targets & Budgets
 
 - **Target Page Load:** <3 seconds (desktop), <5 seconds (mobile)
 - **Core Web Vitals:** LCP <2.5s, FID <100ms, CLS <0.1
 - **TTFB:** <600ms (if possible)
 - **Asset Size:** Images optimized, code minified
 
-### Monitoring Approach
+#### Monitoring Approach
 
 - **Real User Monitoring (RUM):** Tools like Google Analytics, Sentry
 - **Synthetic Monitoring:** Regular performance tests from multiple locations
 - **Alerting:** Set thresholds; alert when performance degrades
 - **Regular Audits:** Monthly performance reviews
 
-### Performance Optimization Tactics
+#### Performance Optimization Tactics
 
 - **Caching Strategy:** Page caching, object caching, database query caching
 - **Image Optimization:** Lazy loading, responsive images, WebP format
@@ -350,7 +617,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Plugin Audit:** Remove unused plugins; replace heavy ones
 - **Database:** Optimize queries, remove old revisions/drafts
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is your site slower than competitors in the same space?
 - Are there specific plugins causing performance degradation?
@@ -360,12 +627,12 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 5: Project Management & Workflow (CMS Path)
+### CMS-5: Project Management & Workflow
 
 **Lead Department:** Project Management  
 **Supporting Departments:** Engineering, Design
 
-### Team Coordination Structure
+#### Team Coordination Structure
 
 **Roles:**
 
@@ -382,9 +649,11 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - Async updates on blockers
 - Clear decision log
 
-### Timeline Phases
+#### Timeline Phases
 
-#### Phase 1: Discovery (1-2 weeks)
+##### Phase 1: Discovery (1-2 weeks)
+
+**Lead:** PM
 
 - Finalize requirements and content structure
 - Platform selection
@@ -392,42 +661,82 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - Team and access preparation
 - **Deliverables:** Content map, CMS selected, hosting live, stakeholders trained on basics
 
-#### Phase 2: Design (2-4 weeks)
+##### Phase 2: Design (2-4 weeks)
+
+**Lead:** Design (PM oversight)
 
 - Create wireframes/mockups for key page types
 - Design admin interface experience
 - Brand integration
 - Design review cycles
+- Accessibility review of designs
 - **Deliverables:** Approved designs, design system, template list
 
-#### Phase 3: Development (2-6 weeks)
+##### Phase 3: Development (2-6 weeks)
+
+**Lead:** Engineering
 
 - CMS configuration and customization
 - Theme/template development
 - Plugin setup and customization
 - Integration implementation
 - Testing environment setup
+- Accessibility implementation
 - **Deliverables:** Staging site, integrated with all third-parties, performance baseline
 
-#### Phase 4: Launch (1-2 weeks)
+##### Phase 4: Launch (1-2 weeks)
+
+**Lead:** PM (Engineering support)
 
 - Content migration (if applicable)
 - Staff training and dry runs
-- Final testing and QA
+- Final testing and QA (see [QA & Testing](#section-2-qa--testing))
+- Accessibility audit
 - Go-live planning and execution
 - **Deliverables:** Live site, trained staff, runbook documented
 
-#### Phase 5: Post-Launch (ongoing)
+##### Phase 5: Post-Launch (ongoing)
+
+**Lead:** PM
 
 - Monitor performance and user issues
 - Support staff for first month
 - Optimization based on real user data
 - Establish maintenance cadence
-- **Deliverables:** Support resolved, optimization roadmap
+- Client handoff (see checklist below)
+- **Deliverables:** Support resolved, optimization roadmap, handoff complete
 
 **Total Typical Timeline:** 8-16 weeks (varies widely)
 
-### Risk Management & Mitigation
+#### Client Handoff Checklist
+
+- [ ] **Credentials & Access**
+
+  - [ ] All login credentials documented and transferred
+  - [ ] Admin accounts created for client team
+  - [ ] Third-party service access transferred (hosting, DNS, analytics)
+  - [ ] Password manager entries shared (if applicable)
+
+- [ ] **Documentation**
+
+  - [ ] CMS user guide delivered
+  - [ ] Content editing instructions documented
+  - [ ] Technical documentation (architecture, integrations)
+  - [ ] Troubleshooting guide / FAQ
+
+- [ ] **Training**
+
+  - [ ] Content editor training completed
+  - [ ] Admin training completed (if applicable)
+  - [ ] Training recordings available (if applicable)
+
+- [ ] **Support & Maintenance**
+  - [ ] Support agreement signed
+  - [ ] Escalation contacts documented
+  - [ ] Maintenance schedule established
+  - [ ] Backup verification completed
+
+#### Risk Management & Mitigation
 
 | Risk                            | Mitigation                                           |
 | ------------------------------- | ---------------------------------------------------- |
@@ -438,7 +747,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 | Plugin conflicts/instability    | Testing in staging; vendor support engaged           |
 | Integration delays              | Integration work starts early; APIs vetted           |
 
-### Communication Checkpoints
+#### Communication Checkpoints
 
 - **End of Discovery:** CMS selected, content map approved, go/no-go decision
 - **End of Design:** Design approved, no surprises, timeline reconfirmed
@@ -446,7 +755,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Pre-Launch:** All testing complete, staff trained, go-live plan finalized
 - **Post-Launch:** Issues resolved? Performance acceptable? Optimization roadmap clear?
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is the content team overwhelmed by the CMS learning curve?
 - Are timelines slipping? Where and why?
@@ -456,23 +765,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 6: Security Considerations (CMS Path)
+### CMS-6: Security Considerations
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Baseline Security Questions
+> **Reference:** See [Baseline Security Questions](#baseline-security-questions) for universal security checklist.
 
-1. **Data Protection:** What data is being collected? How is it stored and encrypted?
-2. **User Authentication:** How are users logging in? Multi-factor authentication?
-3. **Access Control:** Can you limit who edits what content? What about sensitive pages?
-4. **Third-party Risk:** What third-party services have access? What permissions?
-5. **Updates & Patching:** How are security updates applied? Automated?
-6. **Backups:** Are backups automated? Tested? Stored securely?
-7. **Monitoring:** Are security issues logged and monitored?
-8. **Compliance:** What regulations apply? (GDPR, HIPAA, PCI-DSS, etc.)
-
-### CMS-Specific Vulnerabilities
+#### CMS-Specific Vulnerabilities
 
 - **Plugin Vulnerabilities:** Outdated plugins are common attack vectors
 - **User Account Compromise:** Weak passwords, brute force attacks
@@ -481,7 +781,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Unauthorized Access:** User permissions misconfigured
 - **Data Exposure:** Sensitive data in backups or logs
 
-### CMS Security Best Practices
+#### CMS Security Best Practices
 
 - **Keep Everything Updated:** CMS, plugins, themes, server OS
 - **Strong Passwords:** Enforce strong passwords; consider password managers
@@ -492,14 +792,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Monitoring & Logging:** Log security events; alert on suspicious activity
 - **Regular Audits:** Security audits annually or after major changes
 
-### Data Handling for CMS
+#### Data Handling for CMS
 
 - **Customer Data:** Where is it stored? How is it protected? Who has access?
 - **Backups:** Encrypted? Stored securely? Retention policy?
 - **Third-party Access:** What data do plugins/integrations access? Can you limit it?
 - **Compliance:** Document data handling for regulations
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Are plugins outdated or no longer maintained?
 - Is there no documented backup or disaster recovery plan?
@@ -509,38 +809,20 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 1: Project Discovery & Requirements (Custom App Path)
+## Custom App Path
+
+For custom web applications with full-stack control, complex business logic, and custom UI/UX requirements.
+
+---
+
+### APP-1: Discovery & Requirements
 
 **Lead Department:** Project Management  
 **Supporting Departments:** Engineering, Design
 
-### Stakeholder Questions
+> **Reference:** See [Baseline Stakeholder Questions](#baseline-stakeholder-questions) for universal questions.
 
-- What are the primary business goals?
-- Who are the primary users/audience?
-- What problems does this solve for them?
-- How will success be measured?
-- What's the timeline from discovery to launch?
-- What's the budget range?
-
-### Defining Scale & Constraints
-
-- **User Base:** Expected users? Concurrent active users?
-- **Data Volume:** How much data will be stored/processed?
-- **Geographic Scope:** Single region? Global? Latency requirements?
-- **Device Requirements:** Web, mobile, both? Desktop-first?
-- **Technical Constraints:** Legacy systems to integrate? Tech debt to address?
-- **Team Constraints:** In-house team? Contract developers? Offshore?
-
-### Success Metrics
-
-- Application performance (load time, responsiveness)
-- User adoption (sign-ups, retention)
-- Feature usage (core features vs nice-to-have)
-- Business goals (revenue, engagement, conversions)
-- Team satisfaction (development velocity, code quality)
-
-### Custom App-Specific Discovery Questions
+#### Custom App-Specific Discovery Questions
 
 - **MVP Scope:** What's the absolute minimum to launch? What can wait?
 - **Core Features:** What 3-5 features define success?
@@ -551,12 +833,21 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Complexity:** Complex business logic? Real-time features? Machine learning?
 - **Team Experience:** Has the team built this type of app before?
 
-### Project Kickoff Checklist: Custom App Path
+#### Defining Scale & Constraints
+
+- **User Base:** Expected users? Concurrent active users?
+- **Data Volume:** How much data will be stored/processed?
+- **Geographic Scope:** Single region? Global? Latency requirements?
+- **Device Requirements:** Web, mobile, both? Desktop-first?
+- **Technical Constraints:** Legacy systems to integrate? Tech debt to address?
+- **Team Constraints:** In-house team? Contract developers? Offshore?
+
+#### Project Kickoff Checklist: Custom App Path
 
 - [ ] **Discovery Complete**
 
   - [ ] Business goals documented
-  - [ ] Success metrics defined
+  - [ ] Success metrics defined (see [Baseline Success Metrics](#baseline-success-metrics))
   - [ ] User research completed
   - [ ] Market analysis done
   - [ ] Budget & timeline confirmed
@@ -576,7 +867,9 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
   - [ ] Architecture diagram created
   - [ ] Third-party integrations mapped
   - [ ] Performance requirements documented
-  - [ ] Security requirements documented
+  - [ ] Security requirements documented (see [Baseline Security Questions](#baseline-security-questions))
+  - [ ] Accessibility requirements defined (see [Accessibility Requirements](#accessibility-requirements))
+  - [ ] Analytics plan documented (see [Analytics & Tracking](#analytics--tracking))
   - [ ] Scalability plan sketched
 
 - [ ] **Team & Skills**
@@ -602,7 +895,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
   - [ ] Monitoring/logging strategy outlined
   - [ ] CI/CD pipeline planned
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is the MVP scope still unclear or expanding?
 - Does the team lack experience with this type of application?
@@ -613,12 +906,12 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 2: Technology Stack Selection (Custom App Path)
+### APP-2: Technology Stack Selection
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Frontend Framework Considerations
+#### Frontend Framework Considerations
 
 **Decision Framework:**
 
@@ -632,7 +925,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 8. **Learning Curve:** How steep? Can junior developers contribute?
 9. **Tooling:** Build tools, testing, debugging experience?
 
-### Backend/API Architecture
+#### Backend/API Architecture
 
 **Decision Framework:**
 
@@ -645,7 +938,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 7. **Scalability:** Horizontal scaling? Stateless design?
 8. **Testing:** Unit, integration, end-to-end testing framework?
 
-### Database Selection
+#### Database Selection
 
 **Decision Framework:**
 
@@ -658,7 +951,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 7. **Cost:** Storage, transactions, queries?
 8. **Backups/Recovery:** How critical is data?
 
-### Third-party Integrations
+#### Third-party Integrations
 
 - **Payment Processing:** Stripe, Square, PayPal?
 - **Email:** SendGrid, Mailgun, AWS SES?
@@ -667,7 +960,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Authentication:** Auth0, Firebase, custom?
 - **Monitoring:** DataDog, New Relic, Sentry?
 
-### Custom App Stack Decision Framework
+#### Custom App Stack Decision Framework
 
 | Layer         | Considerations                                 | Options                                |
 | ------------- | ---------------------------------------------- | -------------------------------------- |
@@ -677,7 +970,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 | **Hosting**   | Cost, scalability, management burden           | AWS, GCP, Azure, Heroku, etc.          |
 | **Real-time** | Needed? WebSockets, polling, or cloud service? | Socket.io, GraphQL subscriptions, etc. |
 
-### Key Trade-offs
+#### Key Trade-offs
 
 - **Speed to Launch vs Long-term Maintainability:** Startups use cutting-edge; enterprises use stable
 - **Flexibility vs Opinionation:** Minimal frameworks are flexible; full frameworks are opinionated
@@ -685,7 +978,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Managed Services vs Self-hosted:** Managed = operational simplicity; self-hosted = cost savings + control
 - **Consistency vs Performance:** Strong consistency is slower; eventual consistency is faster
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is the team unfamiliar with the chosen stack?
 - Is the stack overly complex for the problem?
@@ -696,14 +989,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 3: Hosting & Infrastructure (Custom App Path)
+### APP-3: Hosting & Infrastructure
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Resource Requirements
+#### Resource Requirements
 
-Use the **Application Resource Requirements Checklist** to determine your hosting needs.
+Use the [Application Resource Requirements Checklist](#application-resource-requirements-checklist) to determine your hosting needs.
 
 **Quick Assessment for Custom Apps:**
 
@@ -728,7 +1021,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
   - Complex background processing
   - Strict latency requirements
 
-### Deployment Environment Options
+#### Deployment Environment Options
 
 | Option                                      | Pros                                 | Cons                                    | Best For                            |
 | ------------------------------------------- | ------------------------------------ | --------------------------------------- | ----------------------------------- |
@@ -737,21 +1030,21 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 | **Serverless (AWS Lambda, Functions)**      | Pay-per-use, auto-scaling, simple    | Cold starts, complexity, vendor lock-in | Event-driven, variable traffic      |
 | **Traditional Cloud (AWS EC2, GCP VMs)**    | Control, scalability, cost-effective | Operational burden, manual scaling      | Established teams, complex apps     |
 
-### Infrastructure as Code (IaC)
+#### Infrastructure as Code (IaC)
 
 - Use code to define infrastructure (Terraform, CloudFormation, Pulumi)
 - Version control your infrastructure
 - Reproducible deployments across environments
 - Easy to scale and modify
 
-### Auto-Scaling & Load Balancing
+#### Auto-Scaling & Load Balancing
 
 - **Horizontal Scaling:** More instances under a load balancer
 - **Vertical Scaling:** Bigger machines (simpler but limits)
 - **Auto-scaling Triggers:** CPU, memory, request queue depth, custom metrics
 - **Database Scaling:** Replicas for reads, sharding for writes (complex)
 
-### Backup & Disaster Recovery
+#### Backup & Disaster Recovery
 
 - **Backup Strategy:** Automated daily backups, encrypted, tested
 - **Recovery Time Objective (RTO):** How fast can you restore?
@@ -759,7 +1052,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Cross-region Backups:** Critical for high-availability apps
 - **Disaster Recovery Plan:** Document step-by-step recovery procedures
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is your hosting provider's support adequate for your team?
 - Can you scale quickly during traffic spikes?
@@ -770,12 +1063,12 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 4: Performance & Optimization (Custom App Path)
+### APP-4: Performance & Optimization
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Custom App-Specific Performance Priorities
+#### Custom App-Specific Performance Priorities
 
 1. **API Response Time:** Target <200ms for most endpoints
 2. **Frontend Load Time:** <3s initial load, fast interactions
@@ -784,7 +1077,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 5. **Concurrency:** How many simultaneous users?
 6. **Reliability:** Uptime SLA (99%, 99.9%, 99.99%?)
 
-### Optimization Targets & Budgets
+#### Optimization Targets & Budgets
 
 - **API Latency:** p99 <500ms (adjust based on app type)
 - **Throughput:** Define based on user base and growth
@@ -792,7 +1085,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Core Web Vitals:** LCP <2.5s, FID <100ms, CLS <0.1
 - **Uptime:** Define SLA (e.g., 99.9% = 43 minutes downtime/month)
 
-### Monitoring Approach
+#### Monitoring Approach
 
 - **Application Performance Monitoring (APM):** DataDog, New Relic, Sentry
 - **Real User Monitoring (RUM):** Understand actual user experience
@@ -801,7 +1094,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Infrastructure Monitoring:** CPU, memory, disk, network, costs
 - **Alerting:** Set thresholds; page on-call for critical issues
 
-### Performance Optimization Tactics
+#### Performance Optimization Tactics
 
 - **Caching:** Application-level (Redis), CDN, HTTP caching
 - **Database:** Indexes, query optimization, replication for reads
@@ -810,7 +1103,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Infrastructure:** Right-sized instances, auto-scaling, CDN
 - **Profiling:** Identify bottlenecks before optimizing
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Are you hitting performance issues unexpectedly in production?
 - Is your database the bottleneck? Have you optimized queries/indexes?
@@ -821,12 +1114,12 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 5: Project Management & Workflow (Custom App Path)
+### APP-5: Project Management & Workflow
 
 **Lead Department:** Project Management  
 **Supporting Departments:** Engineering, Design
 
-### Team Coordination Structure
+#### Team Coordination Structure
 
 **Roles:**
 
@@ -847,9 +1140,11 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - Async updates on blockers, decisions
 - Clear decision log
 
-### Timeline Phases
+#### Timeline Phases
 
-#### Phase 1: Discovery (2-4 weeks)
+##### Phase 1: Discovery (2-4 weeks)
+
+**Lead:** PM
 
 - Requirements finalization
 - Technical architecture design
@@ -858,45 +1153,88 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - Development environment setup
 - **Deliverables:** Architecture doc, MVP user stories, dev environment ready
 
-#### Phase 2: Design (2-4 weeks)
+##### Phase 2: Design (2-4 weeks)
+
+**Lead:** Design (PM oversight)
 
 - UX research and user flows
 - Wireframes and mockups
 - Design system creation
 - Design reviews with engineering and product
+- Accessibility review of designs
 - **Deliverables:** Approved designs, design system, component library started
 
-#### Phase 3: Development (6-16 weeks, varies widely)
+##### Phase 3: Development (6-16 weeks, varies widely)
+
+**Lead:** Engineering
 
 - MVP feature development (iterative)
 - API and backend development
 - Frontend development
-- Testing and QA
+- Testing and QA (see [QA & Testing](#section-2-qa--testing))
 - Performance optimization
 - Security review
+- Accessibility implementation
 - **Deliverables:** Staging environment, all MVP features, documented API, test coverage
 
-#### Phase 4: Launch (1-2 weeks)
+##### Phase 4: Launch (1-2 weeks)
+
+**Lead:** PM (Engineering support)
 
 - Final QA and bug fixes
 - User documentation
 - Team training (if needed)
 - Post-launch support plan
+- Accessibility audit
 - Go-live
 - **Deliverables:** Live product, docs, trained team
 
-#### Phase 5: Post-Launch (ongoing)
+##### Phase 5: Post-Launch (ongoing)
+
+**Lead:** PM
 
 - Monitor performance and user issues
 - High-priority bug fixes
 - User feedback incorporation
 - Performance optimization
 - Planning next features
-- **Deliverables:** Stable product, user trust, roadmap clarity
+- Client handoff (see checklist below)
+- **Deliverables:** Stable product, user trust, roadmap clarity, handoff complete
 
 **Total Typical Timeline:** 12-32 weeks (highly variable)
 
-### Risk Management & Mitigation
+#### Client Handoff Checklist
+
+- [ ] **Credentials & Access**
+
+  - [ ] All login credentials documented and transferred
+  - [ ] Admin accounts created for client team
+  - [ ] Third-party service access transferred (hosting, DNS, analytics, monitoring)
+  - [ ] Code repository access (if applicable)
+  - [ ] CI/CD pipeline access (if applicable)
+
+- [ ] **Documentation**
+
+  - [ ] Technical architecture documentation
+  - [ ] API documentation
+  - [ ] Deployment procedures
+  - [ ] Runbook for common operations
+  - [ ] Troubleshooting guide
+
+- [ ] **Training**
+
+  - [ ] Admin/operations training completed
+  - [ ] Developer onboarding documentation (if client will maintain)
+  - [ ] Training recordings available (if applicable)
+
+- [ ] **Support & Maintenance**
+  - [ ] Support agreement signed
+  - [ ] Escalation contacts documented
+  - [ ] Maintenance schedule established
+  - [ ] Backup verification completed
+  - [ ] Monitoring handoff (dashboards, alerts)
+
+#### Risk Management & Mitigation
 
 | Risk                            | Mitigation                                              |
 | ------------------------------- | ------------------------------------------------------- |
@@ -908,7 +1246,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 | Lack of test coverage           | TDD approach; automated testing required                |
 | Database scaling issues         | Schema designed for scale; read replicas planned        |
 
-### Communication Checkpoints
+#### Communication Checkpoints
 
 - **End of Discovery:** Architecture approved, MVP clear, team ready, go/no-go
 - **End of Design:** UX approved, design system ready, no surprises
@@ -916,7 +1254,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Pre-Launch:** All features complete? Tests passing? Performance acceptable? Go/no-go
 - **Post-Launch:** Issues resolved? Performance acceptable? User feedback positive?
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is scope expanding constantly? MVP in danger?
 - Is the team velocity declining? Why?
@@ -927,25 +1265,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 6: Security Considerations (Custom App Path)
+### APP-6: Security Considerations
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Baseline Security Questions
+> **Reference:** See [Baseline Security Questions](#baseline-security-questions) for universal security checklist.
 
-1. **Authentication:** How do users log in? Is it secure? (password hashing, rate limiting?)
-2. **Authorization:** Can users only access their own data? Role-based access control?
-3. **Data Encryption:** In transit (TLS)? At rest? For sensitive fields?
-4. **Third-party Risk:** What services have access to your data? What permissions do they need?
-5. **API Security:** Is your API protected? Rate limiting? Input validation?
-6. **Database Security:** SQL injection possible? Proper parameterization?
-7. **Secrets Management:** Passwords, API keys, tokens stored securely?
-8. **Compliance:** What regulations apply? (GDPR, CCPA, HIPAA, SOC2, etc.)
-9. **Incident Response:** What's the plan if security is breached?
-10. **Security Testing:** Regular penetration testing? Code reviews? Dependency scanning?
-
-### Custom App-Specific Attack Surfaces
+#### Custom App-Specific Attack Surfaces
 
 - **Authentication Attacks:** Brute force, phishing, weak password resets
 - **API Attacks:** Unauthorized access, injection attacks, rate limiting bypass
@@ -954,7 +1281,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Infrastructure:** Unpatched servers, misconfigured cloud permissions
 - **User Data:** Improper handling, exposure in logs, backups
 
-### Security Best Practices
+#### Security Best Practices
 
 - **Secure by Default:** Security built in, not bolted on
 - **Least Privilege:** Users have minimum required access
@@ -967,7 +1294,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Testing:** Security testing in QA; penetration testing before launch
 - **Documentation:** Document security architecture and decisions
 
-### Data Handling
+#### Data Handling
 
 - **Customer Data:** Where's it stored? How long? Who has access?
 - **Encryption:** What data is encrypted? In transit and at rest?
@@ -976,7 +1303,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Data Retention:** Delete data when no longer needed
 - **User Rights:** Can users export/delete their data? Implement easily.
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Does your app lack HTTPS/TLS?
 - Are passwords not hashed (or hashed with weak algorithms)?
@@ -989,37 +1316,20 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 1: Project Discovery & Requirements (Hybrid Path)
+## Hybrid Path
+
+For projects using a headless CMS with a custom frontend, combining content management flexibility with frontend control.
+
+---
+
+### HYB-1: Discovery & Requirements
 
 **Lead Department:** Project Management  
 **Supporting Departments:** Engineering, Design
 
-### Stakeholder Questions
+> **Reference:** See [Baseline Stakeholder Questions](#baseline-stakeholder-questions) for universal questions.
 
-- What are the primary business goals?
-- Who are the primary users/audience?
-- What content needs to be managed? What needs custom frontend?
-- How will success be measured?
-- What's the timeline from discovery to launch?
-- What's the budget range?
-
-### Defining Scale & Constraints
-
-- **Audience Size:** Monthly visits? Concurrent users?
-- **Content Volume:** How much? Update frequency?
-- **Traffic Patterns:** Spikes? Seasonal? Predictable?
-- **Geographic Scope:** Single region? Global?
-- **Device Requirements:** Desktop, mobile, both?
-- **Team Constraints:** In-house? Agency? Hybrid?
-
-### Success Metrics
-
-- Content publishing efficiency
-- Frontend performance and user experience
-- Content freshness and engagement
-- Team satisfaction (both content and engineering)
-
-### Hybrid-Specific Discovery Questions
+#### Hybrid-Specific Discovery Questions
 
 - **Why Headless?** What does headless unlock that a traditional CMS doesn't?
 - **Content Model:** What content types? How structured?
@@ -1030,12 +1340,21 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - **Team Structure:** Separate content/CMS team and frontend team?
 - **Future Evolution:** Starting as hybrid, or migrating from something?
 
-### Project Kickoff Checklist: Hybrid Path
+#### Defining Scale & Constraints
+
+- **Audience Size:** Monthly visits? Concurrent users?
+- **Content Volume:** How much? Update frequency?
+- **Traffic Patterns:** Spikes? Seasonal? Predictable?
+- **Geographic Scope:** Single region? Global?
+- **Device Requirements:** Desktop, mobile, both?
+- **Team Constraints:** In-house? Agency? Hybrid?
+
+#### Project Kickoff Checklist: Hybrid Path
 
 - [ ] **Discovery Complete**
 
   - [ ] Business goals documented
-  - [ ] Success metrics defined
+  - [ ] Success metrics defined (see [Baseline Success Metrics](#baseline-success-metrics))
   - [ ] Audience/scale understood
   - [ ] Budget & timeline confirmed
   - [ ] Why headless? (Rationale clear)
@@ -1080,13 +1399,19 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
   - [ ] Decision-making process clear
   - [ ] Escalation path for integration issues
 
+- [ ] **Technical Planning**
+
+  - [ ] Security requirements documented (see [Baseline Security Questions](#baseline-security-questions))
+  - [ ] Accessibility requirements defined (see [Accessibility Requirements](#accessibility-requirements))
+  - [ ] Analytics plan documented (see [Analytics & Tracking](#analytics--tracking))
+
 - [ ] **Migration Plan (if applicable)**
   - [ ] Current system audit
   - [ ] Content migration scripts
   - [ ] Parallel run period (if needed)
   - [ ] Rollback plan
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is the headless approach justified, or is it overengineering?
 - Are the content team and frontend team isolated (poor communication)?
@@ -1097,12 +1422,12 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 2: Technology Stack Selection (Hybrid Path)
+### HYB-2: Technology Stack Selection
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Headless CMS Selection
+#### Headless CMS Selection
 
 **Decision Framework:**
 
@@ -1116,7 +1441,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 8. **Learning Curve:** Team familiar with it?
 9. **Pricing:** Transparent? Scales reasonably?
 
-### Frontend Framework Considerations
+#### Frontend Framework Considerations
 
 **Decision Framework:**
 
@@ -1127,7 +1452,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 5. **SEO:** Is SEO critical? SSR/SSG better than SPA.
 6. **Real-time Needs:** Do you need live updates? Webhooks?
 
-### API Layer & Data Fetching
+#### API Layer & Data Fetching
 
 **Strategies:**
 
@@ -1144,14 +1469,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 - What's your deployment frequency?
 - How many pages/content items?
 
-### Integration Points
+#### Integration Points
 
 - **Content to Frontend:** How does content get to the frontend? API calls? Build-time data?
 - **Frontend to CMS:** User feedback? Comments? Dynamic data back to CMS?
 - **Preview System:** Can editors preview changes before publishing?
 - **Webhooks:** Should publishing trigger frontend rebuild?
 
-### Hybrid Stack Decision Framework
+#### Hybrid Stack Decision Framework
 
 | Decision               | Considerations                                     | Options                            |
 | ---------------------- | -------------------------------------------------- | ---------------------------------- |
@@ -1160,7 +1485,7 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 | **Data Fetching**      | Update frequency, real-time needs, deployment      | SSG, SSR, ISR, client-side         |
 | **Hosting**            | Cost, performance, scalability                     | Vercel, Netlify, AWS, etc.         |
 
-### Migration Considerations: CMS to Headless
+#### Migration Considerations: CMS to Headless
 
 **If you're migrating from traditional CMS:**
 
@@ -1172,14 +1497,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 6. **Team Training:** New CMS interface? New frontend deployment? Team needs training.
 7. **Testing:** Content works in both systems? API returns correct data?
 
-### Key Trade-offs
+#### Key Trade-offs
 
 - **CMS Flexibility vs Simplicity:** Headless CMSes are often more powerful but less user-friendly
 - **Frontend Freedom vs Complexity:** Custom frontend = more control but more to maintain
 - **Real-time vs Performance:** Real-time updates need more infrastructure; static is fast but stale
 - **Team Split vs Coordination:** Separate teams move faster but need good communication
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is the headless approach overengineering this project?
 - Is the content model too fluid for a structured headless CMS?
@@ -1190,14 +1515,14 @@ Use the **Application Resource Requirements Checklist** to determine your hostin
 
 ---
 
-## Section 3: Hosting & Infrastructure (Hybrid Path)
+### HYB-3: Hosting & Infrastructure
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Resource Requirements
+#### Resource Requirements
 
-Use the **Application Resource Requirements Checklist** to determine needs for each layer.
+Use the [Application Resource Requirements Checklist](#application-resource-requirements-checklist) to determine needs for each layer.
 
 **Quick Assessment for Hybrid:**
 
@@ -1211,12 +1536,12 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
   - Server-side rendering → moderate compute needed
   - Many pages → scalable hosting needed
 
-### Deployment Environment: Backend (CMS)
+#### Deployment Environment: Backend (CMS)
 
 - **Managed Headless CMS:** Support, scaling, updates handled
 - **Self-hosted:** More control, more operational burden
 
-### Deployment Environment: Frontend
+#### Deployment Environment: Frontend
 
 | Option                                     | Pros                                       | Cons                           | Best For                          |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------ | --------------------------------- |
@@ -1224,20 +1549,20 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 | **Server (Next.js, Nuxt)**                 | Real-time updates, dynamic content         | More operational burden        | Dynamic content, personalization  |
 | **Hybrid (ISR)**                           | Fast initial load, updates without rebuild | Complexity, cache invalidation | Large sites with frequent updates |
 
-### Scaling Considerations: Backend
+#### Scaling Considerations: Backend
 
 - Can the CMS API handle your traffic?
 - Do you need read replicas for the database?
 - Is caching in place (Redis, CDN)?
 
-### Scaling Considerations: Frontend
+#### Scaling Considerations: Frontend
 
 - Does your CDN auto-scale?
 - Can your build process handle large content volumes?
 - Is rebuild time acceptable?
 - Do you need webhooks to trigger rebuilds?
 
-### Migration Considerations: Hosting
+#### Migration Considerations: Hosting
 
 **If you're migrating from traditional CMS hosting:**
 
@@ -1247,7 +1572,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 4. **Downtime Planning:** Some migration requires downtime; plan and communicate
 5. **Rollback:** Can you quickly revert if something fails?
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is CMS API performance adequate for your traffic?
 - Is rebuild time too long for your content update frequency?
@@ -1257,12 +1582,12 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 
 ---
 
-## Section 4: Performance & Optimization (Hybrid Path)
+### HYB-4: Performance & Optimization
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Hybrid-Specific Performance Priorities
+#### Hybrid-Specific Performance Priorities
 
 1. **CMS API Performance:** Target <200ms response time
 2. **Frontend Load Time:** <3s for static sites, <2s with SSG
@@ -1270,7 +1595,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 4. **Rebuild Time:** For SSG, keep rebuilds <10 minutes
 5. **Cache Hit Rate:** CDN and application caching
 
-### Optimization Targets & Budgets
+#### Optimization Targets & Budgets
 
 - **API Latency:** p99 <500ms
 - **Frontend Load:** <3s (SSG much faster)
@@ -1278,7 +1603,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - **Rebuild Time:** <10 minutes for full site (depends on size)
 - **Cache Hit Rate:** >90% for static assets
 
-### Monitoring Approach
+#### Monitoring Approach
 
 - **CMS Monitoring:** API response time, query performance
 - **Frontend Monitoring:** Page load, Core Web Vitals, user experience
@@ -1286,7 +1611,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - **Build Monitoring:** Rebuild time, success/failure rate
 - **Alerting:** Performance degradation, failed builds
 
-### Performance Optimization Tactics
+#### Performance Optimization Tactics
 
 **Backend (CMS):**
 
@@ -1304,7 +1629,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - Incremental Static Regeneration (ISR) for large sites
 - Caching headers and cache invalidation
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is CMS API slow? Have you benchmarked it?
 - Is rebuild time unacceptably long?
@@ -1314,12 +1639,12 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 
 ---
 
-## Section 5: Project Management & Workflow (Hybrid Path)
+### HYB-5: Project Management & Workflow
 
 **Lead Department:** Project Management  
 **Supporting Departments:** Engineering, Design
 
-### Team Coordination Structure
+#### Team Coordination Structure
 
 **Two-Team Model (common for hybrid):**
 
@@ -1349,9 +1674,11 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - Bi-weekly retrospectives
 - Clear decision log and escalation path
 
-### Timeline Phases
+#### Timeline Phases
 
-#### Phase 1: Discovery (2-4 weeks)
+##### Phase 1: Discovery (2-4 weeks)
+
+**Lead:** PM
 
 - Finalize requirements and content model
 - CMS selection and headless approach validation
@@ -1359,41 +1686,53 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - Team formation and separation
 - **Deliverables:** Content model, CMS selected, frontend architecture, teams ready
 
-#### Phase 2: Design (2-4 weeks)
+##### Phase 2: Design (2-4 weeks)
+
+**Lead:** Design (PM oversight)
 
 - Content structure finalization
 - Frontend UX/UI design
 - Design system and component library
 - API contract definition
+- Accessibility review of designs
 - **Deliverables:** Approved designs, content model in CMS, API documented
 
-#### Phase 3: Development (6-12 weeks)
+##### Phase 3: Development (6-12 weeks)
+
+**Lead:** Engineering
 
 - CMS content configuration
 - Content migration (if applicable)
 - Frontend development
-- Integration testing (CMS ↔ Frontend)
+- Integration testing (CMS <-> Frontend)
 - Performance optimization
+- Accessibility implementation
 - **Deliverables:** Staging site, content populated, all features working
 
-#### Phase 4: Launch (1-2 weeks)
+##### Phase 4: Launch (1-2 weeks)
 
-- Final QA and testing
+**Lead:** PM (Engineering support)
+
+- Final QA and testing (see [QA & Testing](#section-2-qa--testing))
 - Training for content team
 - Documentation
+- Accessibility audit
 - Go-live
 - **Deliverables:** Live site, trained team, runbook
 
-#### Phase 5: Post-Launch (ongoing)
+##### Phase 5: Post-Launch (ongoing)
+
+**Lead:** PM
 
 - Monitor performance
 - Content updates and optimization
 - Frontend feature iterations
-- **Deliverables:** Stable site, content freshness, user feedback incorporated
+- Client handoff (see checklist below)
+- **Deliverables:** Stable site, content freshness, user feedback incorporated, handoff complete
 
 **Total Typical Timeline:** 12-24 weeks
 
-### Transition Phase (if migrating from CMS)
+#### Transition Phase (if migrating from CMS)
 
 **Additional phase between Discovery and Design:**
 
@@ -1405,7 +1744,35 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 6. **Monitoring:** Watch for issues post-cutover
 7. **Cleanup:** Decommission old system
 
-### Risk Management & Mitigation
+#### Client Handoff Checklist
+
+- [ ] **Credentials & Access**
+
+  - [ ] CMS admin credentials transferred
+  - [ ] Frontend deployment access (if applicable)
+  - [ ] Third-party service access (hosting, DNS, analytics)
+  - [ ] Code repository access (if applicable)
+
+- [ ] **Documentation**
+
+  - [ ] CMS content editing guide
+  - [ ] Frontend deployment procedures
+  - [ ] API documentation
+  - [ ] Troubleshooting guide
+
+- [ ] **Training**
+
+  - [ ] Content team CMS training completed
+  - [ ] Frontend deployment training (if client will deploy)
+  - [ ] Training recordings available
+
+- [ ] **Support & Maintenance**
+  - [ ] Support agreement signed
+  - [ ] Escalation contacts documented
+  - [ ] Maintenance schedule established
+  - [ ] Backup verification completed (both CMS and frontend)
+
+#### Risk Management & Mitigation
 
 | Risk                                               | Mitigation                                            |
 | -------------------------------------------------- | ----------------------------------------------------- |
@@ -1416,7 +1783,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 | Performance issues at launch                       | Load testing, performance budgets, monitoring         |
 | Content team frustrated with new CMS               | Training, documentation, support                      |
 
-### Communication Checkpoints
+#### Communication Checkpoints
 
 - **End of Discovery:** Content model approved, CMS + frontend selected, go/no-go
 - **End of Design:** API contract finalized, design approved, no surprises
@@ -1424,7 +1791,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - **Pre-Launch:** Content migrated? Frontend complete? Performance acceptable? Go/no-go
 - **Post-Launch:** Performance good? Content team productive? Issues addressed?
 
-### Transition Checkpoints (if migrating)
+#### Transition Checkpoints (if migrating)
 
 - **Infrastructure Ready:** New systems deployed and tested
 - **Migration Scripts:** Content migrated successfully; testing passed
@@ -1432,7 +1799,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - **Cutover:** Traffic switched; monitoring active
 - **Post-Cutover:** Issues resolved, rollback unnecessary
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Are the content and frontend teams not communicating effectively?
 - Is the content model causing friction between teams?
@@ -1442,32 +1809,23 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 
 ---
 
-## Section 6: Security Considerations (Hybrid Path)
+### HYB-6: Security Considerations
 
 **Lead Department:** Engineering  
 **Supporting Departments:** Project Management
 
-### Baseline Security Questions
+> **Reference:** See [Baseline Security Questions](#baseline-security-questions) for universal security checklist.
 
-1. **Data Security:** How is content protected? Backups? Encryption?
-2. **API Security:** Is the CMS API protected? Rate limits? Authentication?
-3. **Frontend Security:** Can anyone access the frontend source code? Secrets hardcoded?
-4. **Team Access:** Content team access to CMS? Frontend team to repositories?
-5. **Authentication:** How do users/editors log in?
-6. **Compliance:** What regulations apply?
-7. **Third-party Risk:** What services have access?
-8. **Incident Response:** What's the plan if security is breached?
-
-### Hybrid-Specific Security Concerns
+#### Hybrid-Specific Security Concerns
 
 - **API Layer:** CMS API is a new attack surface; needs protection
 - **Content Editing:** Who can edit content? Versioning and rollback?
 - **Deployment:** Frontend deployment process; who can deploy?
 - **Data Sync:** Ensuring data consistency between CMS and frontend cache
-- **Webhooks:** CMS→Frontend webhooks; can be misused
+- **Webhooks:** CMS->Frontend webhooks; can be misused
 - **Dependency Risk:** Both CMS platform and frontend framework have supply chain risk
 
-### Security Best Practices
+#### Security Best Practices
 
 **CMS Layer:**
 
@@ -1490,14 +1848,14 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 - Log all API calls
 - Monitor for suspicious activity
 
-### Data Handling
+#### Data Handling
 
 - **Content Data:** Where's it stored (CMS)? Who has access?
 - **User Data:** If users can comment/contribute, how's it protected?
 - **Backups:** CMS content backed up? Accessible if needed?
 - **Compliance:** Document how content and user data are handled
 
-### Red Flag Questions
+#### Red Flag Questions
 
 - Is the CMS API accessible without authentication?
 - Are there no rate limits on the CMS API?
@@ -1508,7 +1866,7 @@ Use the **Application Resource Requirements Checklist** to determine needs for e
 
 ---
 
-## Section 7: Path Evolution Principles
+## Section 3: Path Evolution Principles
 
 **Lead Department:** All  
 **Supporting Departments:** All
@@ -1519,7 +1877,7 @@ Projects don't always start and stay in one path. As businesses grow and require
 
 **Common Evolution Triggers:**
 
-1. **Growth:** More content, more users, more features → more complexity needed
+1. **Growth:** More content, more users, more features -> more complexity needed
 2. **Competitive Pressure:** New features require custom development
 3. **Team Capability:** Team grows; can now handle more complex solutions
 4. **User Experience:** Needs exceed what platform can deliver
@@ -1527,7 +1885,9 @@ Projects don't always start and stay in one path. As businesses grow and require
 6. **Cost:** Initial choice too expensive; need to optimize
 7. **Feature Requests:** Users want features that don't fit the platform
 
-### CMS → Hybrid Evolution
+---
+
+### CMS -> Hybrid Evolution
 
 **Trigger:** Client wants custom frontend/branding but still needs CMS for content management
 
@@ -1543,7 +1903,9 @@ Projects don't always start and stay in one path. As businesses grow and require
 **Effort:** Medium-high  
 **Key Risks:** Content migration, team training, parallel operations
 
-### CMS → Custom App Evolution
+---
+
+### CMS -> Custom App Evolution
 
 **Trigger:** What started as a content site now has complex business logic, real-time data, or user interactions
 
@@ -1559,7 +1921,9 @@ Projects don't always start and stay in one path. As businesses grow and require
 **Effort:** High  
 **Key Risks:** Feature parity, data migration, user confusion during transition
 
-### Hybrid → Custom App Evolution
+---
+
+### Hybrid -> Custom App Evolution
 
 **Trigger:** CMS becomes bottleneck; need full control over content and data
 
@@ -1574,6 +1938,8 @@ Projects don't always start and stay in one path. As businesses grow and require
 **Timeline:** 4-8 months  
 **Effort:** High  
 **Key Risks:** Maintaining two systems, data consistency
+
+---
 
 ### General Evolution Principles
 
@@ -1599,6 +1965,8 @@ Projects don't always start and stay in one path. As businesses grow and require
 - Is evolution worth the cost?
 - Can you meet user needs with current path plus optimization?
 - Or does new path fundamentally unlock something?
+
+---
 
 ### Red Flag Questions
 
@@ -1647,7 +2015,7 @@ Projects don't always start and stay in one path. As businesses grow and require
 
 **Dynamic Content Requires Adequate Hosting Resources**
 
-GetFlywheel sites serving dynamic content (real-time leaderboards, live data) need more than default hosting resources.
+Sites serving dynamic content (real-time leaderboards, live data) need more than default hosting resources.
 
 **Types of Data Queries:**
 
@@ -1677,6 +2045,7 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 - [ ] CMS platform selected
 - [ ] Hosting plan determined
 - [ ] Success metrics identified
+- [ ] Accessibility requirements defined
 
 **Stack Selection**
 
@@ -1701,10 +2070,16 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 
 **Project Management**
 
-- [ ] Timeline: Discovery (1-2w) → Design (2-4w) → Dev (2-6w) → Launch (1-2w) → Post-Launch
+- [ ] Timeline: Discovery (1-2w) -> Design (2-4w) -> Dev (2-6w) -> Launch (1-2w) -> Post-Launch
 - [ ] Team roles defined
 - [ ] Communication cadence established
 - [ ] Risk mitigation planned
+
+**QA & Testing**
+
+- [ ] Testing strategy documented
+- [ ] Accessibility testing planned
+- [ ] UAT process defined
 
 **Security**
 
@@ -1713,6 +2088,13 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 - [ ] Backup/recovery plan documented
 - [ ] User permissions configured
 - [ ] Monitoring/alerting in place
+
+**Client Handoff**
+
+- [ ] Credentials transferred
+- [ ] Documentation delivered
+- [ ] Training completed
+- [ ] Support agreement signed
 
 ---
 
@@ -1724,6 +2106,7 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 - [ ] MVP scope locked
 - [ ] User research completed
 - [ ] Team expertise assessed
+- [ ] Accessibility requirements defined
 
 **Stack Selection**
 
@@ -1748,10 +2131,17 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 
 **Project Management**
 
-- [ ] Timeline: Discovery (2-4w) → Design (2-4w) → Dev (6-16w) → Launch (1-2w) → Post-Launch
+- [ ] Timeline: Discovery (2-4w) -> Design (2-4w) -> Dev (6-16w) -> Launch (1-2w) -> Post-Launch
 - [ ] Team structure defined
 - [ ] Daily stand-ups scheduled
 - [ ] Risk mitigation planned
+
+**QA & Testing**
+
+- [ ] Unit/integration/E2E testing planned
+- [ ] Accessibility testing planned
+- [ ] UAT process defined
+- [ ] Security testing scheduled
 
 **Security**
 
@@ -1759,6 +2149,13 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 - [ ] Data encryption planned (in transit & at rest)
 - [ ] Third-party security reviewed
 - [ ] Testing/monitoring strategy in place
+
+**Client Handoff**
+
+- [ ] Credentials transferred
+- [ ] Technical documentation delivered
+- [ ] Training completed
+- [ ] Support agreement signed
 
 ---
 
@@ -1770,6 +2167,7 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 - [ ] Why headless? (rationale clear)
 - [ ] Content model designed
 - [ ] Frontend complexity justified
+- [ ] Accessibility requirements defined
 
 **Stack Selection**
 
@@ -1794,11 +2192,17 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 
 **Project Management**
 
-- [ ] Timeline: Discovery (2-4w) → Design (2-4w) → Dev (6-12w) → Launch (1-2w) → Post-Launch
+- [ ] Timeline: Discovery (2-4w) -> Design (2-4w) -> Dev (6-12w) -> Launch (1-2w) -> Post-Launch
 - [ ] Two-team model established (content + frontend)
 - [ ] Integration points documented
 - [ ] Communication cadence set
 - [ ] Migration phase (if applicable) planned
+
+**QA & Testing**
+
+- [ ] Integration testing planned (CMS <-> Frontend)
+- [ ] Accessibility testing planned
+- [ ] UAT process defined
 
 **Security**
 
@@ -1806,6 +2210,14 @@ Lambda Legal handled 300k monthly visits at peak traffic with minimal server imp
 - [ ] Frontend secrets management
 - [ ] Webhook authentication
 - [ ] Backup/recovery for both layers
+
+**Client Handoff**
+
+- [ ] CMS credentials transferred
+- [ ] Frontend deployment access transferred
+- [ ] Documentation delivered
+- [ ] Training completed
+- [ ] Support agreement signed
 
 ---
 
@@ -1816,10 +2228,13 @@ This guide provides a decision-focused framework for determining which project p
 **Use this guide to:**
 
 - Quickly identify which path you're on (Section 0)
+- Reference shared foundations for all projects (Section 1)
+- Plan QA & testing strategy (Section 2)
 - Make informed decisions about stack, hosting, performance, and security
 - Plan timelines and team structures
 - Identify risks and mitigation strategies
 - Use embedded checklists for project kickoff and resources
+- Execute client handoff
 
 **For each path, follow these sections in order:**
 
@@ -1832,6 +2247,8 @@ This guide provides a decision-focused framework for determining which project p
 
 **Additional Resources:**
 
-- Section 7: Path Evolution Principles (for projects that evolve over time)
+- Section 1: Shared Foundations (baseline questions, accessibility, analytics)
+- Section 2: QA & Testing (testing strategy for all paths)
+- Section 3: Path Evolution Principles (for projects that evolve over time)
 - Quick Reference Cards: 1-page checklists for each path
 - Embedded Resources: Application Resource Requirements Checklist, Hosting & Performance Notes
