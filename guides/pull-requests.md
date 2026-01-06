@@ -27,6 +27,7 @@ Place at the top of PR description (below title), using GitHub markdown alert:
 ### Examples
 
 **Good:**
+
 ```
 > [!NOTE]
 > **AI-Assisted Contribution**
@@ -37,6 +38,7 @@ Place at the top of PR description (below title), using GitHub markdown alert:
 ```
 
 **Bad:**
+
 - No disclosure
 - Vague: "Used AI" (missing tool/model/scope)
 - Missing human edits description
@@ -44,6 +46,7 @@ Place at the top of PR description (below title), using GitHub markdown alert:
 ### Security Review
 
 AI-assisted PRs require extra security scrutiny:
+
 - Verify no insecure patterns (SQL injection, XSS, etc.)
 - Check for hardcoded secrets/credentials
 - Validate authentication/authorization logic
@@ -53,6 +56,7 @@ AI-assisted PRs require extra security scrutiny:
 ### Review Considerations
 
 When reviewing AI-assisted code:
+
 - Verify author understands the code (not copy-paste)
 - Check for hallucinations/outdated patterns
 - Ensure code follows project conventions
@@ -62,24 +66,31 @@ When reviewing AI-assisted code:
 ## Required Sections
 
 ### Summary
+
 What changed and why. Provide context for the reviewer.
 
 ### How to Review/Test
+
 Steps to verify the work. Could include:
+
 - Pages/routes to check
 - Actions to perform
 - Expected behavior
 
 ### Breaking Changes
+
 Note any breaking changes, migrations, or deprecations.
 
 ### Deploy Notes (if applicable)
+
 Project-dependent. Examples:
+
 - **WP:** Settings to update, plugins to activate
 - **Full-stack:** New env vars, DB migrations
 - **Infra:** Server config changes
 
 ### Linked Items
+
 - Monday board item
 - GitHub Issue (`Closes #123`)
 
@@ -89,10 +100,12 @@ Project-dependent. Examples:
 - Respond to all comments—even resolved ones with "done" or acknowledgment
 - Keep PRs small when possible
 - **AI-assisted PRs:** Require security review flag and extra scrutiny
+- **Hot-fixes:** Can bypass PR if review/deployment takes a few minutes—document in commit
 
 ## Draft PRs
 
 At author discretion. Use when:
+
 - Placeholder to not forget
 - Early feedback needed before ready for merge
 
@@ -133,4 +146,3 @@ Copy to `.github/PULL_REQUEST_TEMPLATE.md`:
 - [ ] AI-assisted code reviewed for security vulnerabilities (if applicable)
 - [ ] Verified code follows project patterns (if AI-assisted)
 ```
-

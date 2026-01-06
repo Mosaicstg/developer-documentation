@@ -8,8 +8,9 @@
 3. Log ticket #, timestamps, rep names
 
 ### Post-Support
-- Document technical findings in project notes
-- Create non-technical summary for stakeholders
+- **Code changes:** Document in code (comments, commit messages, PR notes)
+- **No code changes:** Communicate to relevant stakeholders (PM or client)
+- Create non-technical summary for stakeholders when needed
 
 ## Synthesizing for Non-Technical Audiences
 

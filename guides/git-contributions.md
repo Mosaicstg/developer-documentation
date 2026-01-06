@@ -2,14 +2,16 @@
 
 ## Branch Naming
 
-Format: `[name]/[type]/[branch-name]`
+Format: `[your-name]/[type]/[branch-name]`
 
-| Type      | Use                   |
-| --------- | --------------------- |
-| `feature` | New functionality     |
-| `fix`     | Bug fix               |
-| `hot-fix` | Urgent production fix |
-| `docs`    | Documentation         |
+| Type      | Use                                                               |
+| --------- | ----------------------------------------------------------------- |
+| `feature` | New functionality                                                 |
+| `fix`     | Bug fix                                                           |
+| `hot-fix` | Urgent production fix                                             |
+| `docs`    | Planning docs or cleaning up existing docs (not documenting work) |
+
+**Note:** Document as you go. Use `docs` branches for planning or cleaning up project documentation, not for documenting work separately.
 
 **Examples:** `john/feature/user-auth`, `sarah/fix/login-redirect`
 
@@ -61,6 +63,6 @@ feat!: drop OAuth 1.0 support
 
 ## Pull Requests
 
-PRs are standard. Direct push only for critical production issues—document in commit.
+PRs required for everything except hot-fixes. Hot-fixes can be directly on `main`/`master` only if PR review and deployment takes a few minutes—document in commit.
 
 **Ref:** [Conventional Commits Cheatsheet](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13)
